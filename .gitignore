@@ -1,0 +1,11 @@
+/Purity_Back/.vs
+/Purity_Back/.vs/*
+/Purity_Back/bin
+/Purity_Back/bin/*
+/Purity_Back/obj
+/Purity_Back/obj/*
+
+Purity_Front/.vscode
+Purity_Front/.vscode/*
+Purity_Front/node_modules
+Purity_Front/node_modules/*

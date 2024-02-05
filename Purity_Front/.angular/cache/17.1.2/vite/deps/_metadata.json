@@ -1,0 +1,70 @@
+{
+  "hash": "3e1f325d",
+  "configHash": "773ff8cc",
+  "lockfileHash": "0c536a7b",
+  "browserHash": "3bfbea87",
+  "optimized": {
+    "@angular/animations": {
+      "src": "../../../../../node_modules/@angular/animations/fesm2022/animations.mjs",
+      "file": "@angular_animations.js",
+      "fileHash": "48dc9f3e",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "3f7b896d",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "dad31472",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "7f3a5409",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
+      "file": "@angular_platform-browser_animations.js",
+      "fileHash": "9de39ce7",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "eb831cae",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "2881c25f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-FPXA3ZBW": {
+      "file": "chunk-FPXA3ZBW.js"
+    },
+    "chunk-LSG4SE36": {
+      "file": "chunk-LSG4SE36.js"
+    },
+    "chunk-2GGEPP6L": {
+      "file": "chunk-2GGEPP6L.js"
+    },
+    "chunk-RDTOLH6C": {
+      "file": "chunk-RDTOLH6C.js"
+    },
+    "chunk-MUPCDZEB": {
+      "file": "chunk-MUPCDZEB.js"
+    },
+    "chunk-SXIXOCJ4": {
+      "file": "chunk-SXIXOCJ4.js"
+    }
+  }
+}

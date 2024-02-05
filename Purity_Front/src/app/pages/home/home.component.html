@@ -1,0 +1,689 @@
+<h1 style="width: 0; height: 0">Welcome to Purity!</h1>
+
+<section class="banner"
+    appSwipeDetection
+        (swipeMove)="bannerSwipe($event)"
+        [swipeStop]="bannerSwipeCancel"
+>
+
+    <button class="slide left"
+        (click)="bannerPervious()"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M34.2,47.7L13.4,27.2c-0.6-0.6-0.6-1.6,0-2.2L34.2,4.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L22.1,25c-0.6,0.6-0.6,1.6,0,2.2l16.3,16.1c0.6,0.6,0.6,1.6,0,2.2l-2.2,2.2C35.7,48.2,34.8,48.2,34.2,47.7z"/></g></svg>
+    </button>
+    <button class="slide right"
+        (click)="bannerNext()"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M17.9,4.4l20.7,20.5c0.6,0.6,0.6,1.6,0,2.2L17.9,47.6c-0.6,0.6-1.6,0.6-2.2,0l-2.2-2.2c-0.6-0.6-0.6-1.6,0-2.2l16.3-16.1c0.6-0.6,0.6-1.6,0-2.2L13.6,8.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2C16.4,3.9,17.3,3.9,17.9,4.4z"/></g></svg>
+    </button>
+
+    <div class="item"
+        [@bannerElement]="banner1stItemStatus"
+    >
+        <div class="container"
+            [@bannerContainer]="banner1stItemStatus"
+        >
+            <h2 class="header">Learn Without Limits</h2>
+            <p class="text">Explore endless learning possibilities at Purity.<br>Elevate your education journey with diverse courses.</p>
+            <button class="button">Find Out More</button>
+        </div>
+        <img class="background" src="../../../../assets/banner/banner1.jpg" draggable="false"
+            [@bannerBackground]="banner1stItemStatus"
+        >
+    </div>
+
+    <div class="item"
+        [@bannerElement]="banner2ndItemStatus"
+    >
+        <div class="container"
+            [@bannerContainer]="banner2ndItemStatus"
+        >
+            <h2 class="header">Where Knowledge Knows No Bounds</h2>
+            <p class="text">Embark on a journey of unlimited learning with Purity.<br>Explore diverse courses tailored for your success.<br>Unleash your potential today!</p>
+            <a class="button">Start Your Odyssey</a>
+        </div>
+        <img class="background" src="../../../../assets/banner/banner2.jpg" draggable="false"
+            [@bannerBackground]="banner2ndItemStatus"
+        >
+    </div>
+    
+    <div class="item"
+        [@bannerElement]="banner3rdItemStatus"
+    >
+        <div class="container"
+            [@bannerContainer]="banner3rdItemStatus"
+        >
+            <h2 class="header">Nurturing Minds, Shaping Futures</h2>
+            <p class="text">Ignite your curiosity with Purity's curated courses.<br>Empower your intellect and chart a path to success.</p>
+            <a class="button">Explore Courses</a>
+        </div>
+        <img class="background" src="../../../../assets/banner/banner3.jpg" draggable="false"
+            [@bannerBackground]="banner3rdItemStatus"
+        >
+    </div>
+
+</section>
+
+<section class="section cards background--transparent">
+    <div class="container">
+
+        <h2 class="header">Follow Your Dreams</h2>
+        <div class="separator"></div>
+        <p class="text">Unlock your potential through our transformative education courses.<br>Engage in enriching experiences that propel you toward a brighter future.</p>
+
+        <div class="content cards">
+
+            <div class="card color-1">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M19.1,42.5L2.6,25.9c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2c0.6-0.6,1.6-0.6,2.2,0L19.4,34c0.4,0.4,1.1,0.4,1.5,0L45.2,9.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L21.3,42.5C20.7,43.2,19.7,43.2,19.1,42.5z"/></g></svg>
+                <h3 class="title">DISCOVER YOUR PASSION</h3>
+                <p class="text">Explore courses tailored to your interests. Uncover new passions, and embark on a learning journey that aligns with your dreams.</p>
+                <a class="button">Passion Unleashed</a>
+            </div>
+
+            <div class="card color-2">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M19.1,42.5L2.6,25.9c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2c0.6-0.6,1.6-0.6,2.2,0L19.4,34c0.4,0.4,1.1,0.4,1.5,0L45.2,9.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L21.3,42.5C20.7,43.2,19.7,43.2,19.1,42.5z"/></g></svg>
+                <h3 class="title">ACHIEVE YOUR AMBITIONS</h3>
+                <p class="text">Turn dreams into reality with our comprehensive courses. Equip yourself with the skills needed to achieve your long-held aspirations.</p>
+                <a class="button">Ambitions Realized</a>
+            </div>
+
+            <div class="card color-3">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M19.1,42.5L2.6,25.9c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2c0.6-0.6,1.6-0.6,2.2,0L19.4,34c0.4,0.4,1.1,0.4,1.5,0L45.2,9.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L21.3,42.5C20.7,43.2,19.7,43.2,19.1,42.5z"/></g></svg>
+                <h3 class="title">SHAPE YOUR FUTURE</h3>
+                <p class="text">Craft a future that aligns with your dreams. Our courses provide the knowledge and tools to shape the successful tomorrow you envision.</p>
+                <a class="button">Future in Focus</a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section courses background--svg">
+    <div class="container">
+
+        <h2 class="header">Our Featured Courses</h2>
+        <div class="separator"></div>
+        <p class="text">Discover excellence in learning through our featured courses.<br>Elevate your skills and knowledge with specially curated programs designed for your success.</p>
+
+        <div class="content courses">
+
+            @if (coursesThumbnails[0]) {
+                @for (course of coursesThumbnails; track $index) {
+                    <div class="course">
+                        @if (course.image) {
+                            <a class="picture" style="background-image: url({{course.image}});"></a>
+                        } @else {
+                            <a class="picture" style="background-image: url(../../../assets/course.jpg);"></a>
+                        }
+                        <span class="price">
+                            @if(course.price) {
+                                {{course.price}} USD
+                            }
+                            @else {
+                                FREE 
+                            }
+                        </span>
+                        <div class="text">
+                            <a class="title">
+                                @if(course.title && course.title.length > 30) {
+                                    {{course.title.substring(0, 33)}}...
+                                }
+                                @else {
+                                    {{course.title}}
+                                }
+                            </a>
+                            <p class="about">
+                                @if(course.summary && course.summary.length > 99) {
+                                    {{course.summary.substring(0, 99)}}...
+                                }
+                                @else {
+                                    {{course.summary}}
+                                }
+                            </p>
+                        </div>
+                        <div class="footer">
+                            <a class="info category">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                                {{course.category}}
+                                <div class="title">Category</div>
+                            </a>
+                            <span class="info enrolled">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                                {{course.enrolled}}
+                                <div class="title">Enrolled</div>
+                            </span>
+                        </div>
+                    </div>
+                }
+            } @else {
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                <div class="course loading">
+                    <a class="picture" style="background-image: url();"></a>
+                    <span class="price">???</span>
+                    <div class="text">
+                        <a class="title">Loading courses...</a>
+                        <p class="about"></p>
+                    </div>
+                    <div class="footer">
+                        <a class="info category">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64"><path d="M51.48,15.46A4.52,4.52,0,0,1,56,20V51a4.52,4.52,0,0,1-4.52,4.52h-47A4.52,4.52,0,0,1,0,51H0V13A4.52,4.52,0,0,1,4.52,8.52H16c3.82,0,4.23,1.14,6.74,4.45,2.07,2.74,7.11,2.49,10.39,2.49Z"/><path d="M51.48,18.12H9.24a4.52,4.52,0,0,0-4.52,4.52v2.84L9.19,19H51.54L56,25.49V22.64A4.52,4.52,0,0,0,51.48,18.12Z"/><path d="M4.57,55.48H51.48A4.52,4.52,0,0,0,56,51V23.48A4.52,4.52,0,0,0,51.48,19H9.25a4.52,4.52,0,0,0-4.52,4.52V51a4.65,4.65,0,0,1-.06.72,2.33,2.33,0,0,1-4.6,0A4.5,4.5,0,0,0,4.57,55.48Z"/></svg>
+                            Loading courses...
+                            <div class="title">Category</div>
+                        </a>
+                        <span class="info enrolled">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M15.9,28c-1.4-2.1-2.1-4.5-2.1-7.2c0-4.6,1.9-8.4,4.9-10.7c-1-1.8-3-3.1-5.6-3.1c-4.4,0-6.9,3.6-6.9,7.7c0,2.2,0.7,4.1,2.2,5.4c0.8,0.8,1.5,1.8,1.5,2.8S9.5,24.9,7,26c-3.6,1.6-6.9,3.8-7,7.1C0.1,35.3,1.5,37,3.6,37h3.3c0.5,0,1-0.3,1.3-0.8c1.6-2.9,4.6-4.7,7.1-6C16.2,29.8,16.4,28.7,15.9,28z"/><path d="M45.1,26c-2.5-1.1-2.9-2-2.9-3.1s0.7-2.1,1.5-2.8c1.5-1.4,2.2-3.2,2.2-5.4c0-4.1-2.4-7.7-6.9-7.7c-2.6,0-4.6,1.3-5.7,3.1c3,2.3,4.9,6.1,4.9,10.7c0,2.7-0.7,5.1-2.1,7.2c-0.5,0.8-0.2,1.8,0.6,2.2c2.5,1.2,5.5,3.1,7.1,6c0.3,0.5,0.8,0.8,1.3,0.8h3.3c2.1,0,3.5-1.7,3.5-3.9C52,29.8,48.7,27.6,45.1,26z"/><path d="M32.7,33.3c-2.7-1.2-3.2-2.3-3.2-3.4c0-1.2,0.8-2.3,1.7-3.1c1.6-1.5,2.5-3.6,2.5-6c0-4.5-2.7-8.4-7.6-8.4s-7.6,3.9-7.6,8.4c0,2.4,0.9,4.5,2.5,6c0.9,0.9,1.7,2,1.7,3.1c0,1.2-0.4,2.2-3.2,3.4c-4,1.7-7.8,3.6-7.9,7.2c0,2.4,1.8,4.4,4.1,4.4h10.4h10.4c2.3,0,4.1-2,4.1-4.4C40.5,37,36.7,35.1,32.7,33.3z"/></g></svg>
+                            ???
+                            <div class="title">Enrolled</div>
+                        </span>
+                    </div>
+                </div>
+                
+            }
+        </div>
+
+        <a class="button">View All Courses</a>
+
+    </div>
+</section>
+
+<section class="banner small">
+    <h2 class="header">Become A Student Today!</h2>
+    <p class="text">Embrace your educational journey with us.<br>Join today and unlock a world of knowledge and possibilities.</p>
+    <a class="button">Register Now</a>
+</section>
+
+<section class="section teachers background--white">
+    <div class="container">
+
+        <h2 class="header">Our Awesome Teachers</h2>
+        <div class="separator"></div>
+        <p class="text">A diverse team of experts dedicated to shaping minds.<br>From design gurus to marketing mavens, they inspire and empower learners every day.</p>
+
+        <div class="content teachers carousel"
+            appSwipeDetection
+                (swipeStart)="teachersSwipeStart()"
+                (swipeMove)="teachersSwipeMove($event)"
+                (swipeEnd)="teachersSwipeEnd()"
+        >
+
+            <button class="slide left"
+                (click)="teachersPageDecrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M34.2,47.7L13.4,27.2c-0.6-0.6-0.6-1.6,0-2.2L34.2,4.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L22.1,25c-0.6,0.6-0.6,1.6,0,2.2l16.3,16.1c0.6,0.6,0.6,1.6,0,2.2l-2.2,2.2C35.7,48.2,34.8,48.2,34.2,47.7z"/></g></svg>
+            </button>
+            <button class="slide right"
+                (click)="teachersPageIncrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M17.9,4.4l20.7,20.5c0.6,0.6,0.6,1.6,0,2.2L17.9,47.6c-0.6,0.6-1.6,0.6-2.2,0l-2.2-2.2c-0.6-0.6-0.6-1.6,0-2.2l16.3-16.1c0.6-0.6,0.6-1.6,0-2.2L13.6,8.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2C16.4,3.9,17.3,3.9,17.9,4.4z"/></g></svg>
+            </button>
+
+            <div class="container"
+                appCarousel
+                    [carouselSetPage]="teachersPage"
+                    (carouselCurrentPage)="teachersRecievePage($event)"
+                    [carouselSwipeDistance]="teachersSwipeDistance"
+                    [carouselSwipeActive]="teachersSwipeActive"
+            >
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher1.jpg" draggable="false">
+                    <span class="name">Peter Stevenson</span>
+                    <span class="subject">Designer and CEO</span>
+                    <span class="about">Leading design visionary and business strategist.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher2.jpg" draggable="false">
+                    <span class="name">Alicia Patrick</span>
+                    <span class="subject">Public Relations</span>
+                    <span class="about">Expert in communication and brand promotion.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher3.jpg" draggable="false">
+                    <span class="name">Anna Smith</span>
+                    <span class="subject">Marketing and Sales</span>
+                    <span class="about">Mastermind behind successful marketing campaigns.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher4.jpg" draggable="false">
+                    <span class="name">Thomas Jones</span>
+                    <span class="subject">Front-End Developer</span>
+                    <span class="about">Crafting user-friendly web interfaces with flair.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher5.jpg" draggable="false">
+                    <span class="name">Gloria Angels</span>
+                    <span class="subject">Designer</span>
+                    <span class="about">Creativity meets functionality in her designs.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher6.jpg" draggable="false">
+                    <span class="name">Martin Philips</span>
+                    <span class="subject">Front-End Developer</span>
+                    <span class="about">Transforming ideas into seamless web experiences.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher7.jpg" draggable="false">
+                    <span class="name">Michael Lorens</span>
+                    <span class="subject">Marketing & Sales</span>
+                    <span class="about">Driving sales with innovative marketing strategies.</span>
+                </div>
+                <div class="teacher">
+                    <img class="photo" src="../../../assets/teachers/teacher8.jpg" draggable="false">
+                    <span class="name">William Anderson</span>
+                    <span class="subject">Public Relations</span>
+                    <span class="about">Building strong public relations for impactful brands.</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pages">
+            <button (click)="teachersPageSet(1)" [class.active]="teachersPageRecieved === 1"></button>
+            <button (click)="teachersPageSet(2)" [class.active]="teachersPageRecieved === 2"></button>
+            <button (click)="teachersPageSet(3)" [class.active]="teachersPageRecieved === 3"></button>
+            <button (click)="teachersPageSet(4)" [class.active]="teachersPageRecieved === 4"></button>
+            <button (click)="teachersPageSet(5)" [class.active]="teachersPageRecieved === 5"></button>
+            <button (click)="teachersPageSet(6)" [class.active]="teachersPageRecieved === 6"></button>
+            <button (click)="teachersPageSet(7)" [class.active]="teachersPageRecieved === 7"></button>
+            <button (click)="teachersPageSet(8)" [class.active]="teachersPageRecieved === 8"></button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section reviews background--transparent">
+    <div class="container">
+
+        <h2 class="header">What Our Customers Say</h2>
+        <div class="separator transparent"></div>
+
+        <div class="content reviews carousel"
+            appSwipeDetection
+                    (swipeStart)="reviewsSwipeStart()"
+                    (swipeMove)="reviewsSwipeMove($event)"
+                    (swipeEnd)="reviewsSwipeEnd()"
+        >
+            <div class="container"
+                appCarousel
+                    [carouselSetPage]="reviewsPage"
+                    (carouselCurrentPage)="reviewsRecievePage($event)"
+                    [carouselSwipeDistance]="reviewsSwipeDistance"
+                    [carouselSwipeActive]="reviewsSwipeActive"
+            >
+
+                <div class="review">
+                    <p class="text">The courses here revolutionized my design approach.<br>Comprehensive and insightful, a must-visit for aspiring designers.</p>
+                    <img class="photo" src="../../../assets/reviews/review1.jpg" draggable="false">
+                    <p class="name">Peter Stevenson</p>
+                    <p class="subject">Designer and CEO</p>
+                </div>
+
+                <div class="review">
+                    <p class="text">A game-changer for PR enthusiasts!<br>I've gained invaluable skills that have elevated my professional strategies.</p>
+                    <img class="photo" src="../../../assets/reviews/review2.jpg" draggable="false">
+                    <p class="name">Andy Worner</p>
+                    <p class="subject">Public Relations</p>
+                </div>
+
+                <div class="review">
+                    <p class="text">Exceptional content for anyone in sales and marketing.<br>Practical insights that have boosted my team's performance.</p>
+                    <img class="photo" src="../../../assets/reviews/review3.jpg" draggable="false">
+                    <p class="name">John Evens</p>
+                    <p class="subject">Marketing and Sales</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pages">
+            <button (click)="reviewsPageSet(1)" [class.active]="reviewsPageRecieved === 1"></button>
+            <button (click)="reviewsPageSet(2)" [class.active]="reviewsPageRecieved === 2"></button>
+            <button (click)="reviewsPageSet(3)" [class.active]="reviewsPageRecieved === 3"></button>
+            </div>
+
+    </div>
+</section>
+
+<section class="section blogs background--svg">
+    <div class="container">
+
+        <h2 class="header">Our Latest Blogs</h2>
+        <div class="separator"></div>
+        <p class="text">Dive into thought-provoking blogs from industry experts.<br>From design innovations to marketing trends, stay informed and inspired with our latest articles.</p>
+
+        <div class="content blogs carousel"
+            appSwipeDetection
+                (swipeStart)="blogsSwipeStart()"
+                (swipeMove)="blogsSwipeMove($event)"
+                (swipeEnd)="blogsSwipeEnd()"
+        >
+
+            <button class="slide left"
+                (click)="blogsPageDecrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M34.2,47.7L13.4,27.2c-0.6-0.6-0.6-1.6,0-2.2L34.2,4.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L22.1,25c-0.6,0.6-0.6,1.6,0,2.2l16.3,16.1c0.6,0.6,0.6,1.6,0,2.2l-2.2,2.2C35.7,48.2,34.8,48.2,34.2,47.7z"/></g></svg>
+            </button>
+            <button class="slide right"
+                (click)="blogsPageIncrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M17.9,4.4l20.7,20.5c0.6,0.6,0.6,1.6,0,2.2L17.9,47.6c-0.6,0.6-1.6,0.6-2.2,0l-2.2-2.2c-0.6-0.6-0.6-1.6,0-2.2l16.3-16.1c0.6-0.6,0.6-1.6,0-2.2L13.6,8.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2C16.4,3.9,17.3,3.9,17.9,4.4z"/></g></svg>
+            </button>
+
+            <div class="container"
+                appCarousel
+                    [carouselSetPage]="blogsPage"
+                    (carouselCurrentPage)="blogsRecievePage($event)"
+                    [carouselSwipeDistance]="blogsSwipeDistance"
+                    [carouselSwipeActive]="blogsSwipeActive"
+            >
+
+                @if (blogsThumbnails[0]) {
+                    <div class="blog" style="background-image: url({{blogsThumbnails[0].image}});">
+                        <a class="title">{{blogsThumbnails[0].title}}</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>{{blogsThumbnails[0].author}}</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>{{blogsThumbnails[0].created.substring(0, 10)}}</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+    
+                    <div class="blog" style="background-image: url({{blogsThumbnails[1].image}});">
+                        <a class="title">{{blogsThumbnails[1].title}}</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>{{blogsThumbnails[1].author}}</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>{{blogsThumbnails[1].created.substring(0, 10)}}</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+    
+                    <div class="blog" style="background-image: url({{blogsThumbnails[2].image}});">
+                        <a class="title">{{blogsThumbnails[2].title}}</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>{{blogsThumbnails[2].author}}</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>{{blogsThumbnails[2].created.substring(0, 10)}}</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+    
+                    <div class="blog" style="background-image: url({{blogsThumbnails[3].image}});">
+                        <a class="title">{{blogsThumbnails[3].title}}</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>{{blogsThumbnails[3].author}}</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>{{blogsThumbnails[3].created.substring(0, 10)}}</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+    
+                    <div class="blog" style="background-image: url({{blogsThumbnails[4].image}});">
+                        <a class="title">{{blogsThumbnails[4].title}}</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>{{blogsThumbnails[4].author}}</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>{{blogsThumbnails[4].created.substring(0, 10)}}</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                } @else {
+                    <div class="blog" style="background-image: url();">
+                        <a class="title">Loading blogs...</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>Loading blogs...</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>???</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="blog" style="background-image: url();">
+                        <a class="title">Loading blogs...</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>Loading blogs...</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>???</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="blog" style="background-image: url();">
+                        <a class="title">Loading blogs...</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>Loading blogs...</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>???</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="blog" style="background-image: url();">
+                        <a class="title">Loading blogs...</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>Loading blogs...</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>???</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="blog" style="background-image: url();">
+                        <a class="title">Loading blogs...</a>
+                        <div class="container">
+                            <div class="info author">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><path d="M50,43v2.2c0,2.6-2.2,4.8-4.8,4.8H6.8C4.2,50,2,47.8,2,45.2V43c0-5.8,6.8-9.4,13.2-12.2c0.2-0.1,0.4-0.2,0.6-0.3c0.5-0.2,1-0.2,1.5,0.1c2.6,1.7,5.5,2.6,8.6,2.6s6.1-1,8.6-2.6c0.5-0.3,1-0.3,1.5-0.1c0.2,0.1,0.4,0.2,0.6,0.3C43.2,33.6,50,37.1,50,43z M26,2c6.6,0,11.9,5.9,11.9,13.2S32.6,28.4,26,28.4s-11.9-5.9-11.9-13.2S19.4,2,26,2z"/></svg>
+                                <span>Loading blogs...</span>
+                                <div class="title">Author</div>
+                            </div>
+                            <div class="info date">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M46.5,20h-41C4.7,20,4,20.7,4,21.5V46c0,2.2,1.8,4,4,4h36c2.2,0,4-1.8,4-4V21.5C48,20.7,47.3,20,46.5,20zM19,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M19,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M29,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M29,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z M39,42c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V42z M39,32c0,0.6-0.4,1-1,1h-4c-0.6,0-1-0.4-1-1v-4c0-0.6,0.4-1,1-1h4c0.6,0,1,0.4,1,1V32z"/><path d="M44,7h-4h-1V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2H19V5c0-1.6-1.3-3-3-3l0,0c-1.6,0-3,1.3-3,3v2h-1H8c-2.2,0-4,1.8-4,4v2.5C4,14.3,4.7,15,5.5,15h41c0.8,0,1.5-0.7,1.5-1.5V11C48,8.8,46.2,7,44,7z"/></g></svg>
+                                <span>???</span>
+                                <div class="title">Created</div>
+                            </div>                        
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section clients background--transparent">
+    <div class="container">
+
+        <h2 class="header">Our Awesome Clients</h2>
+        <div class="separator"></div>
+        <p class="text">Celebrating the heart of our success.<br>Trusted collaborations and valued partnerships fuel our growth and innovation.</p>
+
+        <div class="content clients carousel"
+            appSwipeDetection
+                (swipeStart)="clientsSwipeStart()"
+                (swipeMove)="clientsSwipeMove($event)"
+                (swipeEnd)="clientsSwipeEnd()"
+        >
+
+            <button class="slide left"
+                (click)="clientsPageDecrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M34.2,47.7L13.4,27.2c-0.6-0.6-0.6-1.6,0-2.2L34.2,4.5c0.6-0.6,1.6-0.6,2.2,0l2.2,2.2c0.6,0.6,0.6,1.6,0,2.2L22.1,25c-0.6,0.6-0.6,1.6,0,2.2l16.3,16.1c0.6,0.6,0.6,1.6,0,2.2l-2.2,2.2C35.7,48.2,34.8,48.2,34.2,47.7z"/></g></svg>
+            </button>
+            <button class="slide right"
+                (click)="clientsPageIncrease()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 52 52" enable-background="new 0 0 52 52" xml:space="preserve"><g><path d="M17.9,4.4l20.7,20.5c0.6,0.6,0.6,1.6,0,2.2L17.9,47.6c-0.6,0.6-1.6,0.6-2.2,0l-2.2-2.2c-0.6-0.6-0.6-1.6,0-2.2l16.3-16.1c0.6-0.6,0.6-1.6,0-2.2L13.6,8.8c-0.6-0.6-0.6-1.6,0-2.2l2.2-2.2C16.4,3.9,17.3,3.9,17.9,4.4z"/></g></svg>
+            </button>
+
+            <div class="container"
+                appCarousel
+                    [carouselSetPage]="clientsPage"
+                    (carouselCurrentPage)="clientsRecievePage($event)"
+                    [carouselSwipeDistance]="clientsSwipeDistance"
+                    [carouselSwipeActive]="clientsSwipeActive"
+            >
+
+                <img class="client" src="../../../assets/clients/client1.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client2.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client3.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client4.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client5.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client6.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client7.png" draggable="false">
+                <img class="client" src="../../../assets/clients/client8.png" draggable="false">
+
+            </div>
+
+        </div>
+    </div>
+</section>

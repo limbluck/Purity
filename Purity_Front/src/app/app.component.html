@@ -1,0 +1,21 @@
+<header class="header" [class.sidebar-active]="showSidebar"
+    (toggleSidebar)="toggleSidebar()"
+    (toggleChatbar)="toggleChatbar()"
+></header>
+
+<div class="sidebar" [class.sidebar-active]="showSidebar">
+    <app-sidebar class="container" [class.sidebar-active]="showSidebar"></app-sidebar>
+</div>
+
+<div class="chatbar" [class.chatbar-active]="showChatbar">
+    <app-chatbar class="container" [class.chatbar-active]="showChatbar"
+    (chatbarToggle)="toggleChatbar()"
+    ></app-chatbar>
+</div>
+
+<div class="header-spaceholder"></div>
+
+<div class="wrapper" [class.sidebar-active]="showSidebar">
+    <router-outlet></router-outlet>
+    <footer></footer>
+</div>
