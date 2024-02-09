@@ -5,7 +5,7 @@ using Purity_Back.Services;
 namespace Purity_Back.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("server/api/[controller]")]
     public class BlogsController : ControllerBase
     {
         private readonly IBlogsService _blogsService;

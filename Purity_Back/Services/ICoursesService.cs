@@ -7,4 +7,3 @@ namespace Purity_Back.Services
         Task<ServiceResponce<IEnumerable<CourseThumbnailDTO>>> GetRandomCoursesThumbnails(int amount);
     }
 }
-

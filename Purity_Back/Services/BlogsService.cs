@@ -17,17 +17,17 @@ namespace Purity_Back.Services
 
             try
             {
-                using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+                using var connection = new SqlConnection(_configuration.GetConnectionString("Default"));
 
                 var recievedThumbnails = await connection.QueryAsync<BlogThumbnailDTO>(
                                            """
                                            SELECT TOP (@Amount)
-                                               Blogs.Title       AS Title,
-                                           	   Users.Name        AS Author,
-                                           	   Blogs.Created     AS Created,
-                                           	   Blogs.Image       AS Image
+                                               Blogs.Title          AS Title,
+                                           	   Users.Name           AS Author,
+                                           	   Blogs.CreatedDate    AS Created,
+                                           	   Blogs.ImageURL       AS ImageURL
                                            FROM Blogs
-                                           INNER JOIN Users ON Blogs.AuthorSN = Users.SN
+                                           INNER JOIN Users ON Blogs.AuthorID = Users.ID
                                            ORDER BY newid()
                                            """,
                                            new { Amount = amount }
