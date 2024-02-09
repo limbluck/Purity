@@ -1,31 +1,35 @@
-# Purity - My webdev training project
-
-## Link - WiP
-
-## Techstack:
-- Frontend - Angular 17
-- Backend  - ASP.NET MVC API on C#
-- Database - MS SQL Server
+# Purity - [limbluck-purity.mooo.com](http://limbluck-purity.mooo.com/)
 
 ## Work in Progress
 
+## Techstack:
+- Rented cloud server (timeweb.cloud):
+    - OS: Ubuntu 22.04
+    - Server: Nginx 1.18
+- Frontend: Angular 17
+- Backend: ASP.NET 7.0 MVC API on C#
+- Database: MS SQL Server 16
+
 ## Done at the moment:
 
-- Frontend (Angular)
+- Frontend
     - Templates:
         - Header, Footer, Sidebar and Chatbar templates 
         - Home page template
-    - Custom directives:
+    - Directives:
         - Carousel directive
         - Swipe deection directive
         - Dropdown directive
+    - Services:
+        - API service to handle API requests
 
-- Backend (ASP.NET MVC API on C#)
-    - Get methods for Courses thumbnails and Blogs thumbnails
+- Backend
+    - Basic access to database and static files via API
 
-- Database (MS SQL Server)
-    - Standart tables for text data
-    - Filestream-enabled tables for images
+- Data:
+    - Basic MS SQL Server tables with text data
+    - No blobs, just static files with URL strings
+    - Remote connection via SQL Server Manager
 
 ## References
 

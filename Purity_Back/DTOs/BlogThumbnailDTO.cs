@@ -5,6 +5,6 @@
         public string Title { get; init; }
         public string Author { get; init; }
         public string Created { get; init; }
-        public byte[]? Image { get; init; }
+        public string? ImageURL { get; init; }
     }
 }

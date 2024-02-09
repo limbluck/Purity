@@ -4,8 +4,14 @@
 /Purity_Back/bin/*
 /Purity_Back/obj
 /Purity_Back/obj/*
+/Purity_Back/config
+/Purity_Back/config/*
 
-Purity_Front/.vscode
-Purity_Front/.vscode/*
-Purity_Front/node_modules
-Purity_Front/node_modules/*
+/Purity_Front/dist
+/Purity_Front/dist/*
+/Purity_Front/.angular
+/Purity_Front/.angular/*
+/Purity_Front/.vscode
+/Purity_Front/.vscode/*
+/Purity_Front/node_modules
+/Purity_Front/node_modules/*

@@ -18,7 +18,7 @@ namespace Purity_Back.Services
 
             try
             {
-                using var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+                using var connection = new SqlConnection(_configuration.GetConnectionString("Default"));
 
                 var recievedThumbnails = await connection.QueryAsync<CourseThumbnailDTO>(
                                            """
@@ -28,7 +28,7 @@ namespace Purity_Back.Services
                                                Courses.Enrolled       AS Enrolled,
                                                Courses.Price          AS Price,
                                                Courses.Summary        AS Summary,
-                                               Courses.Image          AS Image
+                                               Courses.ImageURL       AS ImageURL
                                            FROM Courses
                                            ORDER BY newid()
                                            """,

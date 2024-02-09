@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { CourseThumbnail } from '../models/course-thumbnail.class';
 import { BlogThumbnail } from "../models/blog-thumbnail.class";
@@ -23,7 +23,9 @@ import { ApiResponce } from '../models/api-responce.class';
 })
 export class APIService {
 
-  private readonly ROOT = "https://localhost:7019";
+  private readonly ROOT = "http://limbluck-purity.mooo.com";
+  private readonly ROOT_api = this.ROOT + "/server/api";
+  private readonly ROOT_assets = this.ROOT + "/server/assets";
 
   constructor(private readonly http: HttpClient) {}
 
@@ -31,7 +33,6 @@ export class APIService {
     let serviceResponce = new Array<CourseThumbnail>;
 
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': `${this.ROOT}`,
       'Content-Type': 'application/json'
     });
 
@@ -40,30 +41,16 @@ export class APIService {
       responseType: 'json' as 'json'
     };
 
-    this.http.get<ApiResponce<Array<CourseThumbnail>>>(`${this.ROOT}/api/courses/thumbnails/${amount}rnd`, options)
+    this.http.get<ApiResponce<Array<CourseThumbnail>>>(`${this.ROOT_api}/courses/thumbnails/${amount}rnd`, options)
       .subscribe({
         next:(apiResponce) => {
           if (apiResponce.success) {
-            // For recieved blob image processing purposes
             for (let i = 0; i < apiResponce.data.length; i++) {
               
-              if (apiResponce.data[i].image) {
-                // Decode base64 string back into a byte array
-                const byteCharacters = atob(apiResponce.data[i].image);
-      
-                // Convert byte array to array buffer
-                const byteNumbers = new Array(byteCharacters.length);
-                for (let i = 0; i < byteCharacters.length; i++) {
-                  byteNumbers[i] = byteCharacters.charCodeAt(i);
-                }
-                const byteArray = new Uint8Array(byteNumbers);
-    
-                // Create data URL from byte array
-                const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Adjust the MIME type if needed
-                apiResponce.data[i].image = URL.createObjectURL(blob);
+              if (apiResponce.data[i].imageURL) {
+                apiResponce.data[i].imageURL = this.ROOT_assets + apiResponce.data[i].imageURL
               }
   
-              // Create service responce
               serviceResponce.push(apiResponce.data[i])
             }
           }
@@ -78,7 +65,6 @@ export class APIService {
     let serviceResponce = new Array<BlogThumbnail>;
 
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': `${this.ROOT}`,
       'Content-Type': 'application/json'
     });
 
@@ -87,32 +73,17 @@ export class APIService {
       responseType: 'json' as 'json'
     };
 
-    this.http.get<ApiResponce<Array<BlogThumbnail>>>(`${this.ROOT}/api/blogs/thumbnails/${amount}rnd`, options)
+    this.http.get<ApiResponce<Array<BlogThumbnail>>>(`${this.ROOT_api}/blogs/thumbnails/${amount}rnd`, options)
       .subscribe({
         next:(apiResponce) => {
           if (apiResponce.success) {
-            // For recieved blob image processing purposes
             for (let i = 0; i < apiResponce.data.length; i++) {
               
-              if (apiResponce.data[i].image) {
-                // Decode base64 string back into a byte array
-                const byteCharacters = atob(apiResponce.data[i].image);
-      
-                // Convert byte array to array buffer
-                const byteNumbers = new Array(byteCharacters.length);
-                for (let i = 0; i < byteCharacters.length; i++) {
-                  byteNumbers[i] = byteCharacters.charCodeAt(i);
-                }
-                const byteArray = new Uint8Array(byteNumbers);
-    
-                // Create data URL from byte array
-                const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Adjust the MIME type if needed
-                apiResponce.data[i].image = URL.createObjectURL(blob);
+              if (apiResponce.data[i].imageURL) {
+                apiResponce.data[i].imageURL = this.ROOT_assets + apiResponce.data[i].imageURL
               }
   
-              // Create service responce
               serviceResponce.push(apiResponce.data[i])
-
             }
           }
         },

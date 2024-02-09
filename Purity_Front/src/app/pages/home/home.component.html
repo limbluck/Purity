@@ -111,8 +111,8 @@
             @if (coursesThumbnails[0]) {
                 @for (course of coursesThumbnails; track $index) {
                     <div class="course">
-                        @if (course.image) {
-                            <a class="picture" style="background-image: url({{course.image}});"></a>
+                        @if (course.imageURL) {
+                            <a class="picture" style="background-image: url({{course.imageURL}});"></a>
                         } @else {
                             <a class="picture" style="background-image: url(assets/course.jpg);"></a>
                         }
@@ -477,7 +477,7 @@
             >
 
                 @if (blogsThumbnails[0]) {
-                    <div class="blog" style="background-image: url({{blogsThumbnails[0].image}});">
+                    <div class="blog" style="background-image: url({{blogsThumbnails[0].imageURL}});">
                         <a class="title">{{blogsThumbnails[0].title}}</a>
                         <div class="container">
                             <div class="info author">
@@ -493,7 +493,7 @@
                         </div>
                     </div>
     
-                    <div class="blog" style="background-image: url({{blogsThumbnails[1].image}});">
+                    <div class="blog" style="background-image: url({{blogsThumbnails[1].imageURL}});">
                         <a class="title">{{blogsThumbnails[1].title}}</a>
                         <div class="container">
                             <div class="info author">
@@ -509,7 +509,7 @@
                         </div>
                     </div>
     
-                    <div class="blog" style="background-image: url({{blogsThumbnails[2].image}});">
+                    <div class="blog" style="background-image: url({{blogsThumbnails[2].imageURL}});">
                         <a class="title">{{blogsThumbnails[2].title}}</a>
                         <div class="container">
                             <div class="info author">
@@ -525,7 +525,7 @@
                         </div>
                     </div>
     
-                    <div class="blog" style="background-image: url({{blogsThumbnails[3].image}});">
+                    <div class="blog" style="background-image: url({{blogsThumbnails[3].imageURL}});">
                         <a class="title">{{blogsThumbnails[3].title}}</a>
                         <div class="container">
                             <div class="info author">
@@ -541,7 +541,7 @@
                         </div>
                     </div>
     
-                    <div class="blog" style="background-image: url({{blogsThumbnails[4].image}});">
+                    <div class="blog" style="background-image: url({{blogsThumbnails[4].imageURL}});">
                         <a class="title">{{blogsThumbnails[4].title}}</a>
                         <div class="container">
                             <div class="info author">

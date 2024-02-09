@@ -7,5 +7,5 @@ export class BlogThumbnail {
     public title!: string;
     public author!: string;
     public created!: string;
-    public image!: string;
+    public imageURL!: string;
 }

@@ -9,5 +9,5 @@ export class CourseThumbnail {
     public enrolled!: number;
     public price!: number;
     public summary!: string;
-    public image!: string;
+    public imageURL!: string;
 }
