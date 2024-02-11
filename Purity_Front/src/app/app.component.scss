@@ -33,7 +33,7 @@
 }
 
 :host>.header-spaceholder {
-    height: clamp(3.5em, calc(20vw * 0.3), 4.5em);
+    height: clamp(3.5em, calc(20dvw * 0.3), 4.5em);
 }
 
 :host>.sidebar {
@@ -56,7 +56,7 @@
                 left: calc( (100% - 1920px) / 2);
             }
             @media screen and (max-width: 1400px) {
-                margin-top: clamp(3.5em, calc(20vw * 0.3), 4.5em);
+                margin-top: clamp(3.5em, calc(20dvw * 0.3), 4.5em);
             }
         }
         &.sidebar-active {
@@ -81,34 +81,35 @@
 }
 
 :host>.chatbar {
+    $full-screen-width: 420px; // Width of a screen on which chatbar is 100% of the screen
+
     & {
         & {
-            & {
-                position: fixed;
-                right: -8px;
-        
-                width: clamp(0em, 100vw, 24.5em);
-                height: 100%;
-        
-                overflow: hidden;
-        
-                z-index: -10;
-                box-shadow: none;
-        
-                transition-property: z-index;
-                transition-delay: 250ms;
-            }
-            @media screen and (min-width: 1920px) {
-                right: calc( (100% - 1920px) / 2 - 8px);
-            }
-            @media screen and (max-width: 380px) {
-                right: 0;
-            }
+            position: fixed;
+            right: -8px;
+    
+            width: clamp(0em, 100dvw, 26em);
+            height: 100%;
+    
+            overflow: hidden;
+    
+            z-index: -10;
+            box-shadow: none;
+    
+            transition-property: z-index;
+            transition-delay: 250ms;
         }
         &.chatbar-active {
             transition-property: z-index;
             transition-delay: 0ms;
             z-index: 40;
+        }
+        @media screen and (min-width: 1920px) {
+            right: calc( (100% - 1920px) / 2 - 8px);
+        }
+        @media screen and (max-width: $full-screen-width) {
+            width: 100dvw;
+            right: 0;
         }
     }
 
@@ -125,7 +126,7 @@
         
                 transition: right 250ms ease;
             }
-            @media screen and (max-width: 380px) {
+            @media screen and (max-width: $full-screen-width) {
                 width: 100%;
             }
         }
@@ -133,7 +134,7 @@
             & {
                 right: -4px;
             }
-            @media screen and (max-width: 380px) {
+            @media screen and (max-width: $full-screen-width) {
                 right: 0;
             }
         }
@@ -145,7 +146,7 @@
         box-sizing: border-box;
         margin: 0 auto;
         width: 100%;
-        height: calc(100vh - clamp(3.5em, calc(20vw * 0.3), 4.5em));
+        height: calc(100vh - clamp(3.5em, calc(20dvw * 0.3), 4.5em));
         max-width: 1920px;
     
         overflow-y: scroll;
