@@ -1,111 +1,43 @@
 import styles from './Header.module.scss'
+import profilePhotoPlaceholderURL from '../../assets/profile-pic.jpg'
 
-import profilePhotoPlaceholder from '../../assets/profile-pic.jpg'
 import { useAuthContext } from '../../context/auth.context'
-import { useCallback, useRef, useState } from 'react'
+import { useRef } from 'react'
+import useDropdown from '../../hooks/useDropdown.hook'
 
-export default function Header() {
+export default function Header(props: {toggleSidebar(): void}) {
 
     const MyAuthContext = useAuthContext()
 
-    // #region Language dropdown
+    // Language dropdown
 
-        const [showLanguageDropdown, setShowLanguageDropdown] = useState<boolean>(false)
-        function toggleLanguageDropdown() {
-            if (!showLanguageDropdown) {
-                setShowLanguageDropdown(true);
-                document.addEventListener("mousedown", languageClickOustide, true);
-            } else {
-                setShowLanguageDropdown(false);
-                document.removeEventListener("mousedown", languageClickOustide, true);
-            }
-        }
         const languageRef = useRef<HTMLDivElement>(null);
-        const languageClickOustide = useCallback((event: MouseEvent) => {
-            if (!languageRef.current!.contains(event.target as HTMLElement)) {
-                setShowLanguageDropdown(false);
-                document.removeEventListener("mousedown", languageClickOustide, true);
-            }
-        }, [])
+        const [showLanguageDropdown, toggleLanguageDropdown] = useDropdown(languageRef);
 
-    // #endregion
+    // Search dropdown
 
-    // #region Search dropdown
-
-        const [showSearchDropdown, setShowSearchDropdown] = useState<boolean>(false)
-        function toggleSearchDropdown() {
-            if (!showSearchDropdown) {
-                setShowSearchDropdown(true);
-                document.addEventListener("mousedown", searchClickOustide, true);
-            } else {
-                setShowSearchDropdown(false);
-                document.removeEventListener("mousedown", searchClickOustide, true);
-            }
-        }
         const searchRef = useRef<HTMLDivElement>(null);
-        const searchClickOustide = useCallback((event: MouseEvent) => {
-            if (!searchRef.current!.contains(event.target as HTMLElement)) {
-                setShowSearchDropdown(false);
-                document.removeEventListener("mousedown", searchClickOustide, true);
-            }
-        }, [])
+        const [showSearchDropdown, toggleSearchDropdown] = useDropdown(searchRef);
 
-    // #endregion
+    // Notifications dropdown
 
-    // #region Notifications dropdown
-
-        const [showNotificationsDropdown, setShowNotificationsDropdown] = useState<boolean>(false)
-        function toggleNotificationsDropdown() {
-            if (!showNotificationsDropdown) {
-                setShowNotificationsDropdown(true);
-                document.addEventListener("mousedown", notificationsClickOustide, true);
-            } else {
-                setShowNotificationsDropdown(false);
-                document.removeEventListener("mousedown", notificationsClickOustide, true);
-            }
-        }
         const notificationsRef = useRef<HTMLDivElement>(null);
-        const notificationsClickOustide = useCallback((event: MouseEvent) => {
-            if (!notificationsRef.current!.contains(event.target as HTMLElement)) {
-                setShowNotificationsDropdown(false);
-                document.removeEventListener("mousedown", notificationsClickOustide, true);
-            }
-        }, [])
+        const [showNotificationsDropdown, toggleNotificationsDropdown] = useDropdown(notificationsRef);
 
-    // #endregion
+    //Profile dropdown
 
-    // #region Profile dropdown
-
-        const [showProfileDropdown, setShowProfileDropdown] = useState<boolean>(false)
-        function toggleProfileDropdown() {
-            if (!showProfileDropdown) {
-                setShowProfileDropdown(true);
-                document.addEventListener("mousedown", profileClickOustide, true);
-            } else {
-                setShowProfileDropdown(false);
-                document.removeEventListener("mousedown", profileClickOustide, true);
-            }
-        }
         const profileRef = useRef<HTMLDivElement>(null);
-        const profileClickOustide = useCallback((event: MouseEvent) => {
-            if (!profileRef.current!.contains(event.target as HTMLElement)) {
-                setShowProfileDropdown(false);
-                document.removeEventListener("mousedown", profileClickOustide, true);
-            }
-        }, [])
+        const [showProfileDropdown, toggleProfileDropdown] = useDropdown(profileRef);
 
         function handleLogOutClick() {
             MyAuthContext.setAuth(false);
-            setShowProfileDropdown(false);
-            document.removeEventListener("mousedown", profileClickOustide, true);
+            toggleProfileDropdown();
         }
 
-    // #endregion
-
     return (
-        <header className={styles.header}> {/* (click)="toggleSidebar.emit()" */}
+        <header className={styles.header}>
 
-            <button className={styles.sidebar}>
+            <button className={styles.sidebar} onClick={props.toggleSidebar}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M46.5,14h-41C4.7,14,4,13.3,4,12.5v-3C4,8.7,4.7,8,5.5,8h41C47.3,8,48,8.7,48,9.5v3C48,13.3,47.3,14,46.5,14z"/><path d="M46.5,28.9h-41c-0.8,0-1.5-0.7-1.5-1.5v-3C4,23.7,4.7,23,5.5,23h41c0.8,0,1.5,0.7,1.5,1.5v3C48,28.2,47.3,28.9,46.5,28.9z"/><path d="M46.5,44h-41C4.7,44,4,43.3,4,42.5v-3C4,38.7,4.7,38,5.5,38h41c0.8,0,1.5,0.7,1.5,1.5v3C48,43.3,47.3,44,46.5,44z"/></svg>
             </button>
 
@@ -196,7 +128,7 @@ export default function Header() {
                     ref={profileRef}
                     onClick={toggleProfileDropdown}
                 >
-                    <img className={styles.photo} src={profilePhotoPlaceholder} />
+                    <img className={styles.photo} src={profilePhotoPlaceholderURL} />
                     <span className={`${styles.name} ${showProfileDropdown ? styles.active : ''}`}>Peter Evans</span> 
 
                     {showProfileDropdown && (
