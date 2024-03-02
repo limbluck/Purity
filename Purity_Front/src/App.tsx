@@ -7,14 +7,16 @@ import Home from './components/pages/Home.page';
 
 function App() {
 
-  const [authContext, setAuthContext] = useState(false);
+  // Auth mock
+    const [authContext, setAuthContext] = useState(false);
 
-  const [showSidebar, setShowSidebar] = useState(false);
-  function toggleSidebar() {
-    showSidebar ?
-      setShowSidebar(false) :
-      setShowSidebar(true)
-  }
+  // Sidebar controls
+    const [showSidebar, setShowSidebar] = useState(false);
+    function toggleSidebar() {
+      showSidebar ?
+        setShowSidebar(false) :
+        setShowSidebar(true)
+    }
 
   return (
     <>

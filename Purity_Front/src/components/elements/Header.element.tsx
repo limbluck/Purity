@@ -7,7 +7,9 @@ import useDropdown from '../../hooks/useDropdown.hook'
 
 export default function Header(props: {toggleSidebar(): void}) {
 
-    const MyAuthContext = useAuthContext()
+    // Auth mock
+
+        const MyAuthContext = useAuthContext()
 
     // Language dropdown
 
