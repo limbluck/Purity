@@ -4,51 +4,70 @@ import { MyAuthContext } from './context/auth.context'
 import Header from './components/elements/Header.element'
 import Sidebar from './components/elements/Sidebar.element';
 import Home from './components/pages/Home.page';
+import Footer from './components/elements/Footer.element';
+import Chatbar from './components/elements/Chatbar.element';
 
-function App() {
+export default function App() {
 
-  // Auth mock
-    const [authContext, setAuthContext] = useState(false);
+    // #region Auth mock
 
-  // Sidebar controls
-    const [showSidebar, setShowSidebar] = useState(false);
-    function toggleSidebar() {
-      showSidebar ?
-        setShowSidebar(false) :
-        setShowSidebar(true)
+        const [authContext, setAuthContext] = useState(false);
+
+    // #endregion
+
+    // #region Sidebar controls
+
+        const [showSidebar, setShowSidebar] = useState(false);
+        function toggleSidebar() {
+        showSidebar ?
+            setShowSidebar(false) :
+            setShowSidebar(true)
+        }
+
+    // #endregion
+
+    // #region Chatbar controls
+
+        const [showChatbar, setShowChatbar] = useState(false);
+        function toggleChatbar() {
+        showChatbar ?
+            setShowChatbar(false) :
+            setShowChatbar(true)
+        }
+
+        function renderChatbar() {
+        return (
+            <div className={`${styles.chatbar} ${showChatbar ? styles.chatbar_active : undefined}`}>
+                <div className={`${styles.container} ${showChatbar ? styles.chatbar_active : undefined}`}>
+                <Chatbar toggleChatbar={toggleChatbar}/>
+                </div>
+            </div>
+        )
+        }
+
+    // #endregion
+
+    return (
+        <MyAuthContext.Provider value={{auth: authContext, setAuth: setAuthContext}}>
+            <div className={`${styles.header} ${showSidebar ? styles.sidebar_active: ''}`}>
+                <Header toggleSidebar={toggleSidebar} toggleChatbar={toggleChatbar}/>
+            </div>
+
+            <div className={`${styles.sidebar} ${showSidebar ? styles.sidebar_active: ''}`}>
+                <div className={`${styles.container} ${showSidebar ? styles.sidebar_active: ''}`}>
+                    <Sidebar />
+                </div> 
+            </div>
+
+            {authContext && renderChatbar()}
+
+            <div className={styles.header_spaceholder}></div>
+
+            <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`}> {/* <router-outlet></router-outlet> */}
+                <Home />
+                <Footer />
+            </div>
+
+        </MyAuthContext.Provider>
+    )
     }
-
-  return (
-    <>
-      <MyAuthContext.Provider value={{auth: authContext, setAuth: setAuthContext}}>
-        <div className={`${styles.header} ${showSidebar ? styles.sidebar_active: ''}`}> {/* (toggleChatbar)="toggleChatbar()" */}
-          <Header toggleSidebar={toggleSidebar}/>
-        </div> 
-
-        <div className={`${styles.sidebar} ${showSidebar ? styles.sidebar_active: ''}`}>
-          <div className={`${styles.container} ${showSidebar ? styles.sidebar_active: ''}`}>
-            <Sidebar />
-          </div> 
-        </div> 
-
-      {/*<div class="chatbar" [class.chatbar-active]="showChatbar">
-          <app-chatbar class="container" [class.chatbar-active]="showChatbar"
-          (chatbarToggle)="toggleChatbar()"
-          ></app-chatbar>
-      </div>
-       */}
-
-        <div className={styles.header_spaceholder}></div>
-
-        <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`}>
-            <Home />
-            {/* <router-outlet></router-outlet> */}
-            {/* <footer></footer> */}
-        </div>
-
-      </MyAuthContext.Provider>
-    </>
-  )
-}
-
-export default App

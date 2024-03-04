@@ -1,11 +1,11 @@
 @import '../../variables.scss';
 
 @keyframes bannerAnimation {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
+    from {
+        scale: 1;
     }
-    100% {
-        transform: translate(-50%, -50%) scale(1.2);
+    to {
+        scale: 1.2;
     }
 }
 
@@ -246,7 +246,8 @@
             position: absolute;
             left: 50%;
             top: 50%;
-    
+            translate: -50% -50%;
+
             min-width: 100%;
             min-height: 100%;
         }
@@ -254,10 +255,11 @@
             animation-name: bannerAnimation;
             animation-duration: 12s;
             animation-fill-mode: forwards;
+            animation-timing-function: linear;
         }
         &.hidden>.background {
-            transform: translate(-50%, -50%) scale(1.2);
-            transition: transform 12s ease-out;
+            scale: 1;
+            transition: scale 12s ease-out;
         }
     }
 }

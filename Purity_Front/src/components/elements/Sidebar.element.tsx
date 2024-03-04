@@ -1,13 +1,13 @@
 import styles from './Sidebar.module.scss'
 import logoURL from '../../assets/logo.png'
+import { useAuthContext } from '../../context/auth.context'
 
 export default function Sidebar() {
-    return (
-        <div className={styles.sidebar}>
-            <div className={styles.logo}>
-                <img src={logoURL} draggable="false" />
-            </div>
+    
+    const MyAuthContext = useAuthContext()
 
+    function renderLinks() {
+        return (<>
             <nav className={styles.main}>
                 <a className={styles.active} draggable="false"> {/* routerLink="/home" routerLinkActive="active" */}
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><g><path d="M49,27h-5v22c0,0.6-0.4,1-1,1H33c-0.6,0-1-0.4-1-1V32H20v17c0,0.6-0.4,1-1,1H9c-0.6,0-1-0.4-1-1V27H3c-0.4,0-0.8-0.2-0.9-0.6C1.9,26,2,25.6,2.3,25.3l23-23c0.4-0.4,1.1-0.4,1.4,0l23,23c0.3,0.3,0.3,0.7,0.2,1.1S49.4,27,49,27z"/></g></svg>
@@ -32,6 +32,16 @@ export default function Sidebar() {
             </nav>
 
             <div className={styles.separator}></div>
+        </>)
+    }
+
+    return (
+        <div className={styles.sidebar}>
+            <div className={styles.logo}>
+                <img src={logoURL} draggable="false" />
+            </div>
+
+            {MyAuthContext.auth && renderLinks()}
 
             <nav className={styles.info}>
                 <a draggable="false">Home</a> {/* routerLink="/home" */}
