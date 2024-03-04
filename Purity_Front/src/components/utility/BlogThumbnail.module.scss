@@ -1,0 +1,160 @@
+@import '../../variables.scss';
+
+.blog {
+    $color-title-background: #1a1a1a;
+
+    & {
+        & {
+            position: relative;
+
+            box-sizing: border-box;
+            width: 350px;
+            height: 300px;
+            padding: 1.5em;
+
+            display: flex;
+            gap: 1.25em;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            border-radius: 5px;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: $box-shadow-main;
+        }
+        @media screen and (max-width: 1140px) {
+            width: clamp(240px, 30.7vw, 350px);
+        }
+        @media screen and (max-width: 940px) {
+            width: clamp(240px, 46.8vw, 350px);
+        }
+        @media screen and (max-width: 698px) {
+            width: clamp(240px, 95.7vw, 350px);
+        }
+
+        &::after {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 80%;
+
+            content: '';
+
+            opacity: 0.9;
+            border-radius: 0 0 5px 5px;
+            background: linear-gradient(
+                to bottom,
+                rgba(#000000, 0.0) 0,
+                rgba(#000000, 0.3) 20%,
+                rgba(#000000, 0.8) 100%
+            );
+        }
+    }
+
+    >.title {
+        & {
+            position: relative;
+            z-index: 1;
+
+            font-size: 1.0625rem;
+            font-weight: 600;
+            line-height: 1.5;
+
+            color: $color-background-light;
+
+            user-select: none;
+            cursor: pointer;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+    >.container {
+        & {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        >.info {
+            & {
+                & {
+                    position: relative;
+                    z-index: 1;
+
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75em;
+                    
+                    user-select: none;
+                }
+                &.author {
+                    cursor: pointer;
+                }
+                &.author:hover {
+                    text-decoration: underline $color-background-light;
+                }
+                &.date {
+                    cursor: default;
+                }
+            }
+            
+            >.title {
+                & {
+                    visibility: hidden;
+    
+                    position: absolute;
+                    bottom: 150%;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+    
+                    padding: 0.286em 0.571em;
+                    
+                    font-size: 0.875rem;
+    
+                    opacity: 0;
+                    border-radius: 0.429em;
+                    color: $color-background-light;
+                    background-color: $color-title-background;
+    
+                    transition: opacity $transition-time-standart ease;
+                }
+
+                &::after {
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+
+                    width: 0.625em;
+                    height: 0.625em;
+                    background-color: $color-title-background;
+                    content: "";
+                }
+            }
+            &:hover>.title {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            >svg {
+                width: 1em;
+                height: 1em;
+                
+                fill: $color-background-light;
+            }
+
+            >span {
+                font-size: 0.875rem;
+                line-height: 1.5;
+                line-height: 1.5;
+
+                color: $color-background-light;
+            }
+
+        }
+    }
+}

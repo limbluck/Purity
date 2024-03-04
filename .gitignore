@@ -1,11 +1,17 @@
+.vs
+.github
+.gitignore
+
 /Purity_Back/.vs
 /Purity_Back/.vs/*
 /Purity_Back/bin
 /Purity_Back/bin/*
 /Purity_Back/obj
 /Purity_Back/obj/*
-/Purity_Back/config
-/Purity_Back/config/*
+/Purity_Back/.config
+/Purity_Back/.config/*
+/Purity_Back/Properties
+/Purity_Back/Properties/*
 
 /Purity_Front/dist
 /Purity_Front/dist/*
