@@ -4,6 +4,7 @@ import profilePhotoPlaceholderURL from '../../assets/profile-pic.jpg'
 import { useAuthContext } from '../../context/auth.context'
 import { useRef } from 'react'
 import useDropdown from '../../hooks/useDropdown.hook'
+import { Link } from 'react-router-dom'
 
 type Props = {
     toggleSidebar(): void,
@@ -220,7 +221,7 @@ export default function Header(props: Props) {
             </button>
 
             <nav className={styles.navigation}>
-                <a tabIndex={0} draggable="false">Home</a> {/* routerLink="/home" */}
+                <Link to='/home' tabIndex={0} draggable="false">Home</Link>
                 <a tabIndex={0} draggable="false">Courses</a>
                 <a tabIndex={0} draggable="false">Blogs</a>
                 <a tabIndex={0} draggable="false">About</a>

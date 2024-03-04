@@ -6,6 +6,7 @@ import Sidebar from './components/elements/Sidebar.element';
 import Home from './components/pages/Home.page';
 import Footer from './components/elements/Footer.element';
 import Chatbar from './components/elements/Chatbar.element';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 export default function App() {
 
@@ -48,7 +49,10 @@ export default function App() {
     // #endregion
 
     return (
+        <>
         <MyAuthContext.Provider value={{auth: authContext, setAuth: setAuthContext}}>
+        <BrowserRouter>
+        
             <div className={`${styles.header} ${showSidebar ? styles.sidebar_active: ''}`}>
                 <Header toggleSidebar={toggleSidebar} toggleChatbar={toggleChatbar}/>
             </div>
@@ -63,11 +67,16 @@ export default function App() {
 
             <div className={styles.header_spaceholder}></div>
 
-            <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`}> {/* <router-outlet></router-outlet> */}
-                <Home />
+            <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`}>
+                <Routes>
+                    <Route path='/home' element={<Home />}/>
+                    <Route path='*' element={<Navigate to="/home" />} />
+                </Routes>
                 <Footer />
             </div>
 
+        </BrowserRouter>
         </MyAuthContext.Provider>
+        </>
     )
     }
