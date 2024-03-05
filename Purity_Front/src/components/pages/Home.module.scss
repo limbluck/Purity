@@ -1,6 +1,15 @@
 @import '../../variables.scss';
 
-@keyframes bannerAnimation {
+@keyframes bannerItemAnimation {
+    from {
+        z-index: 6;
+    }
+    to {
+        z-index: -1;
+    }
+}
+
+@keyframes bannerBackgroundAnimation {
     from {
         scale: 1;
     }
@@ -8,6 +17,7 @@
         scale: 1.2;
     }
 }
+
 
 .hidden_header {
     width: 0;
@@ -165,6 +175,7 @@
             opacity: 0;
             z-index: 6;
             user-select: none;
+            animation: bannerItemAnimation 2s forwards;
         }
 
         >.container {
@@ -236,6 +247,7 @@
                     transform: $button-hover-translate-main;
                 }
             }
+            
         }
         &.hidden>.container {
             opacity: 0;
@@ -252,7 +264,7 @@
             min-height: 100%;
         }
         &.shown>.background {
-            animation-name: bannerAnimation;
+            animation-name: bannerBackgroundAnimation;
             animation-duration: 12s;
             animation-fill-mode: forwards;
             animation-timing-function: linear;

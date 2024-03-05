@@ -9,6 +9,15 @@ export default function BlogThumbnail(props: {status: RequestStatus, blog?: Blog
     // Blog variable for simplicity
         const blog = props.blog;
 
+        if (blog) {
+
+            // Chop title
+                if (blog.title.length > 30) blog.title = blog.title.substring(0, 27) + '...'
+
+            // Chop author
+                if (blog.author.length > 20) blog.author = blog.author.substring(0, 17) + '...'
+        }
+
     // Inject API service
         const api = new APIService()
 

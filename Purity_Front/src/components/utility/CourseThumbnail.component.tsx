@@ -8,6 +8,18 @@ export default function CourseThumbnail(props: {status: RequestStatus, course?: 
     // Course variable for simplicity
         const course = props.course;
 
+        if (course) {
+
+            // Chop title
+                if (course.title.length > 33) course.title = course.title.substring(0, 30) + '...'
+
+            // Chop summary
+                if (course.summary && course.summary.length > 99) course.summary = course.summary.substring(0, 96) + '...'
+
+            // Chop category
+                if (course.category && course.category.length > 30) course.category = course.category.substring(0, 27) + '...'
+        }
+
     // Inject API service
         const api = new APIService()
 
@@ -21,8 +33,8 @@ export default function CourseThumbnail(props: {status: RequestStatus, course?: 
                 <span className={styles.price}>{course!.price ? `${course!.price} USD` : 'FREE'}</span>
 
                 <div className={styles.text}>
-                    <a className={styles.title}>{course!.title.substring(0, 33)}</a>
-                    <p className={styles.about}>{course!.summary?.substring(0, 99)}</p>
+                    <a className={styles.title}>{course!.title}</a>
+                    <p className={styles.about}>{course!.summary}</p>
                 </div>
 
                 <div className={styles.footer}>
