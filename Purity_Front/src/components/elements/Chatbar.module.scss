@@ -360,9 +360,6 @@
 
                         >a {
                             @include dropdown-link-standart;
-                            &.hidden {
-                                display: none;
-                            }
                         }
                     }
                 }

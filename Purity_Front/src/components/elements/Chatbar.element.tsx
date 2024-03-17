@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react'
-import styles from './Chatbar.module.scss'
+import { useRef, useState } from 'react';
+import styles from './Chatbar.module.scss';
 import useDropdown from '../../hooks/useDropdown.hook';
 
-import profilePicture from '../../assets/profile-pic.jpg'
-import chatUserPicture from '../../assets/chat-user.jpg'
+import profilePicture from '../../assets/profile-pic.jpg';
+import chatUserPicture from '../../assets/chat-user.jpg';
 
 type Props = {
     toggleChatbar(): void
@@ -31,25 +31,19 @@ enum ContactsModes {
 
 export default function Chatbar(props: Props) {
 
-    // #region Mode controls
-
-        const [chatbarMode, setChatbarMode] = useState<ChatbarModes>(ChatbarModes.default);
-
-    // #endregion
-
     // #region Buttons section
-    
+
         function handleButtonsCloseClick() {
-    
+
             props.toggleChatbar();
-    
+
             // Reset chatbar mode and group tabs
             setTimeout(() => {
                 setChatbarMode(ChatbarModes.default);
                 setCurrentGroupTab(GroupTabs.none);
             }, 250);
         }
-    
+
         function handleButtonsContactsClick() {
             setChatbarMode(ChatbarModes.contacts)
         }
@@ -60,9 +54,11 @@ export default function Chatbar(props: Props) {
     
     // #endregion
 
-    // #region Header section
+    // #region Mode controls
 
-        // Shared
+        const [chatbarMode, setChatbarMode] = useState<ChatbarModes>(ChatbarModes.default);
+
+        // Shared functions
 
             function handleHeaderBackClick() {
                 setChatbarMode(ChatbarModes.default);
@@ -72,80 +68,72 @@ export default function Chatbar(props: Props) {
                 setChatbarMode(ChatbarModes.search)
             }
 
-        // Contacts mode
+    // #endregion
 
-            const [contactsMode, setContactsMode] = useState<ContactsModes>(ContactsModes.contacts)
+    // #region Default mode
 
-        // Conversation mode
+        const [currentGroupTab, setCurrentGroupTab] = useState<GroupTabs>(GroupTabs.none);
 
-            const conversationMenuRef = useRef(null);
-            const [showConversationMenuDropdown, toggleConversationMenuDropdown] = useDropdown(conversationMenuRef)
-            function handleConversationMenuClick() {
-                toggleConversationMenuDropdown();
-            }
-            function handleConversationMenuDropdownClick(event: React.MouseEvent<HTMLDivElement>) {
-                event.stopPropagation();
-            }
-
-            function renderConversationMenuDropdown() {
-                return (
-                    <div className={styles.dropdown}
-                        onClick={handleConversationMenuDropdownClick}>
-
-                        <a className={`${conversationStarred ? styles.hidden : undefined}`} tabIndex={0}
-                            onClick={handleStarClick}
-                            >Star</a>
-                        <a className={`${conversationStarred ? undefined : styles.hidden}`} tabIndex={0}
-                            onClick={handleUnstarClick}
-                            >Unstar</a>
-                        <a className={`${conversationMuted ? styles.hidden : undefined}`} tabIndex={0}
-                            onClick={handleMuteClick}
-                            >Mute</a>
-                        <a className={`${conversationMuted ? undefined : styles.hidden}`} tabIndex={0}
-                            onClick={handleUnmuteClick}
-                            >Unmute</a>
-                        <a className={`${conversationBlocked ? styles.hidden : undefined}`} tabIndex={0}
-                            onClick={handleBlockClick}
-                            >Block</a>
-                        <a className={`${conversationBlocked ? undefined : styles.hidden}`} tabIndex={0}
-                            onClick={handleUnblockClick}
-                            >Unblock</a>
-                        <a tabIndex={0}>Delete</a>
-                    </div>
-                )
-            }
-
-            function handleStarClick() {setConversationStarred(true)}
-            function handleUnstarClick() {setConversationStarred(false)}
-            function handleMuteClick() {setConversationMuted(true)}
-            function handleUnmuteClick() {setConversationMuted(false)}
-            function handleBlockClick() {setConversationBlocked(true)}
-            function handleUnblockClick() {setConversationBlocked(false)}
+        function handleGroupStarredClick() {currentGroupTab === GroupTabs.starred ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.starred)}
+        function handleGroupPrivateClick() {currentGroupTab === GroupTabs.private ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.private)}
+        function handleGroupGroupClick() {currentGroupTab === GroupTabs.group ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.group)}
 
     // #endregion
 
-    // #region Main section
+    // #region Contacts mode
 
-        // Contacts mode
+        const [contactsMode, setContactsMode] = useState<ContactsModes>(ContactsModes.contacts);
 
-            function handleContactsClick() {setContactsMode(ContactsModes.contacts)}
-            function handleRequestsClick() {setContactsMode(ContactsModes.requests)}
+        function handleContactsClick() {setContactsMode(ContactsModes.contacts)}
+        function handleRequestsClick() {setContactsMode(ContactsModes.requests)}
 
-        // Default mode
+    // #endregion
 
-            const [currentGroupTab, setCurrentGroupTab] = useState<GroupTabs>(GroupTabs.none);
-
-            function handleGroupStarredClick() {setCurrentGroupTab(GroupTabs.starred)}
-            function handleGroupPrivateClick() {setCurrentGroupTab(GroupTabs.private)}
-            function handleGroupGroupClick() {setCurrentGroupTab(GroupTabs.group)}
+    // #region Conversation mode
 
             function handleConversationClick() {setChatbarMode(ChatbarModes.conversation)}
 
-        // Conversation mode
+            // Menu dropdown
+                const conversationMenuRef = useRef(null);
+                const [showConversationMenuDropdown, toggleConversationMenuDropdown] = useDropdown(conversationMenuRef)
+                function handleConversationMenuClick() {
+                    toggleConversationMenuDropdown();
+                }
+                function handleConversationMenuDropdownClick(event: React.MouseEvent<HTMLDivElement>) {
+                    event.stopPropagation();
+                }
 
-            const [conversationStarred, setConversationStarred] = useState<boolean>(false);
-            const [conversationMuted, setConversationMuted] = useState<boolean>(false);
-            const [conversationBlocked, setConversationBlocked] = useState<boolean>(false);
+                function renderConversationMenuDropdown() {
+                    return (
+                        <div className={styles.dropdown}
+                            data-testid="conversation-menu-dropdown"
+                            onClick={handleConversationMenuDropdownClick}>
+
+                            { !conversationStarred && <a onClick={handleStarClick}    tabIndex={0} data-testid="conversation-menu-dropdown-star">Star</a>}
+                            {  conversationStarred && <a onClick={handleUnstarClick}  tabIndex={0} data-testid="conversation-menu-dropdown-unstar">Unstar</a>}
+                            { !conversationMuted   && <a onClick={handleMuteClick}    tabIndex={0} data-testid="conversation-menu-dropdown-mute">Mute</a>}
+                            {  conversationMuted   && <a onClick={handleUnmuteClick}  tabIndex={0} data-testid="conversation-menu-dropdown-unmute">Unmute</a>}
+                            { !conversationBlocked && <a onClick={handleBlockClick}   tabIndex={0} data-testid="conversation-menu-dropdown-block">Block</a>}
+                            {  conversationBlocked && <a onClick={handleUnblockClick} tabIndex={0} data-testid="conversation-menu-dropdown-unblock">Unblock</a>}
+                            <a tabIndex={0}>Delete</a>
+
+                        </div>
+                    )
+                }
+
+            // Conversation status
+
+                const [conversationStarred, setConversationStarred] = useState<boolean>(false);
+                const [conversationMuted, setConversationMuted] = useState<boolean>(false);
+                const [conversationBlocked, setConversationBlocked] = useState<boolean>(false);
+
+                function handleStarClick() {setConversationStarred(true)}
+                function handleUnstarClick() {setConversationStarred(false)}
+                function handleMuteClick() {setConversationMuted(true)}
+                function handleUnmuteClick() {setConversationMuted(false)}
+                function handleBlockClick() {setConversationBlocked(true)}
+                function handleUnblockClick() {setConversationBlocked(false)}
+
 
     // #endregion
 
@@ -154,6 +142,7 @@ export default function Chatbar(props: Props) {
 
             <div className={`${styles.section} ${styles.buttons}`}>
                 <button className={styles.close}
+                    data-testid='buttons-close'
                     onClick={handleButtonsCloseClick}>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -162,6 +151,7 @@ export default function Chatbar(props: Props) {
                 </button>
 
                 <button className={styles.contacts}
+                    data-testid='buttons-contacts'
                     onClick={handleButtonsContactsClick}>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -171,6 +161,7 @@ export default function Chatbar(props: Props) {
                 </button>
 
                 <button className={styles.settings}
+                    data-testid='buttons-settings'
                     onClick={handleButtonsSettingsClick}>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -181,17 +172,47 @@ export default function Chatbar(props: Props) {
 
             <div className={`${styles.section} ${styles.header}`}>
 
-                <div className={`${styles.contacts} ${chatbarMode === ChatbarModes.contacts && styles.active}`}
-                >
-                    <button className={styles.close}
+                <div className={`${styles.default} ${(chatbarMode === ChatbarModes.default || chatbarMode === ChatbarModes.search) && styles.active}`}
+                    data-testid="default-header">
+
+                    <button className={`${styles.close} ${chatbarMode === ChatbarModes.search && styles.active}`}
+                        data-testid="search-close"
                         onClick={handleHeaderBackClick}>
 
                         <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
                             <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/>
                         </svg>
                     </button>
-                    <span>{contactsMode}</span> 
+
+                    <input className={`${chatbarMode === ChatbarModes.search && styles.active}`} type="text" placeholder="Search"
+                        data-testid="default-search"
+                        onClick={handleHeaderSearchClick}/>
+
+                    <button className={`${styles.search} ${chatbarMode === ChatbarModes.search && styles.active}`}
+                        data-testid="search-find">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/>
+                        </svg>
+                    </button>
+
+                </div>
+
+                <div className={`${styles.contacts} ${chatbarMode === ChatbarModes.contacts && styles.active}`}
+                    data-testid='contacts-header'>
+
+                    <button className={styles.close}
+                        data-testid='contacts-close'
+                        onClick={handleHeaderBackClick}>
+
+                        <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
+                            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/>
+                        </svg>
+                    </button>
+
+                    <span data-testid="contacts-header-value">{contactsMode}</span> 
+
                     <button className={styles.search}
+                        data-testid='contacts-search'
                         onClick={handleHeaderSearchClick}>
 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -200,8 +221,11 @@ export default function Chatbar(props: Props) {
                     </button>
                 </div>
 
-                <div className={`${styles.settings} ${chatbarMode === ChatbarModes.settings && styles.active}`}>
+                <div className={`${styles.settings} ${chatbarMode === ChatbarModes.settings && styles.active}`}
+                    data-testid='settings-header'>
+
                     <button className={styles.close}
+                        data-testid="settings-close"
                         onClick={handleHeaderBackClick}>
 
                         <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
@@ -211,8 +235,11 @@ export default function Chatbar(props: Props) {
                     <span>Settings</span>
                 </div>
 
-                <div className={`${styles.conversation} ${chatbarMode === ChatbarModes.conversation && styles.active}`}>
+                <div className={`${styles.conversation} ${chatbarMode === ChatbarModes.conversation && styles.active}`}
+                data-testid="conversation-header">
+
                     <button className={styles.close}
+                        data-testid="conversation-close"
                         onClick={handleHeaderBackClick}>
 
                         <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
@@ -226,46 +253,22 @@ export default function Chatbar(props: Props) {
                         <div className={styles.name}>John Smith</div>
                         <div className={styles.status}>
                             <span className={styles.icons}>
-                                <svg className={`${conversationStarred && styles.active}`}
-                                    clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.322 2.923c.126-.259.39-.423.678-.423.289 0 .552.164.678.423.974 1.998 2.65 5.44 2.65 5.44s3.811.524 6.022.829c.403.055.65.396.65.747 0 .19-.072.383-.231.536-1.61 1.538-4.382 4.191-4.382 4.191s.677 3.767 1.069 5.952c.083.462-.275.882-.742.882-.122 0-.244-.029-.355-.089-1.968-1.048-5.359-2.851-5.359-2.851s-3.391 1.803-5.359 2.851c-.111.06-.234.089-.356.089-.465 0-.825-.421-.741-.882.393-2.185 1.07-5.952 1.07-5.952s-2.773-2.653-4.382-4.191c-.16-.153-.232-.346-.232-.535 0-.352.249-.694.651-.748 2.211-.305 6.021-.829 6.021-.829s1.677-3.442 2.65-5.44z" fill-rule="nonzero"/></svg>
-                                <svg className={`${conversationMuted && styles.active}`}
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 17.251v1.749h-13.065l9.444-8.566c.565 2.995 1.013 5.966 3.621 6.817zm-9.971 6.749c1.578 0 2.971-1.402 2.971-3h-6c0 1.598 1.449 3 3.029 3zm10.971-19.802l-20.654 18.735-1.346-1.48 2.705-2.453h-1.705v-1.749c4.877-1.591 2.195-10.594 6.863-13.306.645-.374 1.041-1.069 1.04-1.82v-.003c0-1.172.939-2.122 2.097-2.122s2.097.95 2.097 2.122v.003c-.001.75.396 1.447 1.04 1.82 1.064.618 1.743 1.565 2.22 2.674l4.302-3.901 1.341 1.48zm-12-2.198c0 .552.448 1 1 1s1-.448 1-1c0-.551-.448-1-1-1s-1 .449-1 1z"/></svg>
-                                <svg className={`${conversationBlocked && styles.active}`}
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-14v-4h14v4z"/></svg>
+                                {conversationStarred && <svg data-testid="conversation-starred-icon" clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.322 2.923c.126-.259.39-.423.678-.423.289 0 .552.164.678.423.974 1.998 2.65 5.44 2.65 5.44s3.811.524 6.022.829c.403.055.65.396.65.747 0 .19-.072.383-.231.536-1.61 1.538-4.382 4.191-4.382 4.191s.677 3.767 1.069 5.952c.083.462-.275.882-.742.882-.122 0-.244-.029-.355-.089-1.968-1.048-5.359-2.851-5.359-2.851s-3.391 1.803-5.359 2.851c-.111.06-.234.089-.356.089-.465 0-.825-.421-.741-.882.393-2.185 1.07-5.952 1.07-5.952s-2.773-2.653-4.382-4.191c-.16-.153-.232-.346-.232-.535 0-.352.249-.694.651-.748 2.211-.305 6.021-.829 6.021-.829s1.677-3.442 2.65-5.44z" fillRule="nonzero"/></svg>}
+                                {conversationMuted   && <svg data-testid="conversation-muted-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 17.251v1.749h-13.065l9.444-8.566c.565 2.995 1.013 5.966 3.621 6.817zm-9.971 6.749c1.578 0 2.971-1.402 2.971-3h-6c0 1.598 1.449 3 3.029 3zm10.971-19.802l-20.654 18.735-1.346-1.48 2.705-2.453h-1.705v-1.749c4.877-1.591 2.195-10.594 6.863-13.306.645-.374 1.041-1.069 1.04-1.82v-.003c0-1.172.939-2.122 2.097-2.122s2.097.95 2.097 2.122v.003c-.001.75.396 1.447 1.04 1.82 1.064.618 1.743 1.565 2.22 2.674l4.302-3.901 1.341 1.48zm-12-2.198c0 .552.448 1 1 1s1-.448 1-1c0-.551-.448-1-1-1s-1 .449-1 1z"/></svg>}
+                                {conversationBlocked && <svg data-testid="conversation-blocked-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-14v-4h14v4z"/></svg>}
                             </span>
                             <span>Offline</span>
                         </div>
                     </div>
 
                     <button className={styles.menu}
+                        data-testid="conversation-menu"
                         ref={conversationMenuRef}
                         onClick={handleConversationMenuClick}>
 
-                        <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z"/></svg>
+                        <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z"/></svg>
 
                         {showConversationMenuDropdown && renderConversationMenuDropdown()}
-                    </button>
-
-                </div>
-
-                <div className={`${styles.default} ${(chatbarMode === ChatbarModes.default || chatbarMode === ChatbarModes.search) && styles.active}`}>
-
-                    <button className={`${styles.close} ${chatbarMode === ChatbarModes.search && styles.active}`}
-                        onClick={handleHeaderBackClick}>
-
-                        <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24">
-                            <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/>
-                        </svg>
-                    </button>
-
-                    <input className={`${chatbarMode === ChatbarModes.search && styles.active}`} type="text" placeholder="Search"
-                        onClick={handleHeaderSearchClick}/>
-
-                    <button className={`${styles.search} ${chatbarMode === ChatbarModes.search && styles.active}`}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/>
-                        </svg>
                     </button>
 
                 </div>
@@ -274,12 +277,86 @@ export default function Chatbar(props: Props) {
 
             <div className={`${styles.section} ${styles.main}`}>
 
-                <div className={`${styles.contacts} ${chatbarMode === ChatbarModes.contacts && styles.active}`}>
+                <div className={`${styles.default} ${chatbarMode === ChatbarModes.default && styles.active}`}
+                    data-testid='default-main'>
+
+                    <div className={`${styles.group} ${styles.starred} ${currentGroupTab === GroupTabs.starred && styles.unfold}`}
+                        data-testid="default-starred"
+                        onClick={handleGroupStarredClick}>
+
+                        <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
+                        </svg>
+                        <span className={styles.name}>STARRED</span>
+                        <span className={styles.quantity}>(1)</span>
+                    </div>
+                    <div className={`${styles.conversations} ${currentGroupTab === GroupTabs.starred && styles.unfold}`}
+                        data-testid="default-starred-conversations">
+                        <div className={styles.conversation}
+                            data-testid="default-conversation"
+                            onClick={handleConversationClick}>
+
+                            <img src={chatUserPicture} draggable="false" />
+                            <div className={styles.info}>
+                                <div className={styles.upper_container}>
+                                    <span className={styles.name}>John Smith</span>
+                                    <span className={styles.timestamp}>11/11/23</span>
+                                </div>
+                                <span className={styles.sender}>You:</span>
+                                <span className={styles.message}>Hello!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.group} ${styles.group_chats} ${currentGroupTab === GroupTabs.group && styles.unfold}`}
+                        data-testid="default-group"
+                        onClick={handleGroupGroupClick}>
+                        <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
+                        </svg>
+                        <span className={styles.name}>GROUP</span>
+                        <span className={styles.quantity}>(0)</span>
+                    </div>
+                    <div className={`${styles.conversations} ${styles.empty} ${currentGroupTab === GroupTabs.group && styles.unfold}`}
+                        data-testid="default-group-conversations">
+                        <div>No group conversations</div>
+                    </div>
+
+                    <div className={`${styles.group} ${styles.private} ${currentGroupTab === GroupTabs.private && styles.unfold}`}
+                        data-testid="default-private"
+                        onClick={handleGroupPrivateClick}>
+                        <svg clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
+                        </svg>
+                        <span className={styles.name}>PRIVATE</span>
+                        <span className={styles.quantity}>(0)</span>
+                    </div>
+                    <div className={`${styles.conversations} ${styles.empty} ${currentGroupTab === GroupTabs.private && styles.unfold}`}
+                        data-testid="default-private-conversations">
+                        No prviate conversations
+                    </div>
+
+                    <div className={styles.see_all}>
+                        <a>See all</a>
+                    </div>
+
+                </div>
+
+                <div className={`${styles.search} ${chatbarMode === ChatbarModes.search && styles.active}`}
+                    data-testid="search-main">
+                    Search people and messages
+                </div>
+
+                <div className={`${styles.contacts} ${chatbarMode === ChatbarModes.contacts && styles.active}`}
+                    data-testid='contacts-main'>
+
                     <div className={styles.categories}>
                         <button className={`${contactsMode === ContactsModes.contacts && styles.contacts}`}
+                            data-testid="contacts-contacts"
                             onClick={handleContactsClick}
                         >Contacts</button>
                         <button className={`${contactsMode === ContactsModes.requests && styles.contacts}`}
+                            data-testid="contacts-requests"
                             onClick={handleRequestsClick}
                         >Requests</button>
                     </div>
@@ -291,30 +368,29 @@ export default function Chatbar(props: Props) {
                     </div>
                 </div>
 
-                <div className={`${styles.settings} ${chatbarMode === ChatbarModes.settings && styles.active}`}>
+                <div className={`${styles.settings} ${chatbarMode === ChatbarModes.settings && styles.active}`}
+                    data-testid='settings-main'>
+
                     <span className={styles.category}>Privacy</span>
                     <span className={styles.description}>You can restrict who can message you</span>
                     <div className={styles.option}>
-                        <div><input type="radio" name="privacy" id="privacy1" checked /><label htmlFor="privacy1">My contacts only</label></div>
+                        <div><input type="radio" name="privacy" id="privacy1" defaultChecked /><label htmlFor="privacy1">My contacts only</label></div>
                         <div><input type="radio" name="privacy" id="privacy2" /><label htmlFor="privacy2">My contacts and anyone in my courses</label></div>
                     </div>
 
                     <span className={styles.category}>Notifications</span>
                     <div className={styles.option}>
-                        <div><input type="checkbox" id="email" /><label htmlFor="email">Email</label></div>
+                        <div><input type="checkbox" id="email" defaultChecked /><label htmlFor="email">Email</label></div>
                     </div>
                     
                     <span className={styles.category}>General</span>
                     <div className={styles.option}>
-                        <div><input type="checkbox" id="enter" /><label htmlFor="enter">Use enter to send</label></div>
+                        <div><input type="checkbox" id="enter" defaultChecked /><label htmlFor="enter">Use enter to send</label></div>
                     </div>
                 </div>
 
-                <div className={`${styles.search} ${chatbarMode === ChatbarModes.search && styles.active}`}>
-                    Search people and messages
-                </div>
-
-                <div className={`${styles.conversation} ${chatbarMode === ChatbarModes.conversation && styles.active}`}>
+                <div className={`${styles.conversation} ${chatbarMode === ChatbarModes.conversation && styles.active}`}
+                    data-testid="conversation-main">
 
                     <div className={styles.request}>Contact request sent</div>
 
@@ -439,62 +515,6 @@ export default function Chatbar(props: Props) {
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 0l-6 22-8.129-7.239 7.802-8.234-10.458 7.227-7.215-1.754 24-12zm-15 16.668v7.332l3.258-4.431-3.258-2.901z"/></svg>
                         </button>
-                    </div>
-
-                </div>
-
-                <div className={`${styles.default} ${chatbarMode === ChatbarModes.default && styles.active}`}>
-
-                    <div className={`${styles.group} ${styles.starred} ${currentGroupTab === GroupTabs.starred && styles.unfold}`}
-                            onClick={handleGroupStarredClick}>
-                        <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
-                        </svg>
-                        <span className={styles.name}>STARRED</span>
-                        <span className={styles.quantity}>(1)</span>
-                    </div>
-                    <div className={`${styles.conversations} ${currentGroupTab === GroupTabs.starred && styles.unfold}`}>
-                        <div className={styles.conversation}
-                            onClick={handleConversationClick}>
-
-                            <img src={chatUserPicture} draggable="false" />
-                            <div className={styles.info}>
-                                <div className={styles.upper_container}>
-                                    <span className={styles.name}>John Smith</span>
-                                    <span className={styles.timestamp}>11/11/23</span>
-                                </div>
-                                <span className={styles.sender}>You:</span>
-                                <span className={styles.message}>Hello!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={`${styles.group} ${styles.group_chats} ${currentGroupTab === GroupTabs.group && styles.unfold}`}
-                        onClick={handleGroupGroupClick}>
-                        <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
-                        </svg>
-                        <span className={styles.name}>GROUP</span>
-                        <span className={styles.quantity}>(0)</span>
-                    </div>
-                    <div className={`${styles.conversations} ${styles.empty} ${currentGroupTab === GroupTabs.group && styles.unfold}`}>
-                        <div>No group conversations</div>
-                    </div>
-
-                    <div className={`${styles.group} ${styles.private} ${currentGroupTab === GroupTabs.private && styles.unfold}`}
-                        onClick={handleGroupPrivateClick}>
-                        <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/>
-                        </svg>
-                        <span className={styles.name}>PRIVATE</span>
-                        <span className={styles.quantity}>(0)</span>
-                    </div>
-                    <div className={`${styles.conversations} ${styles.empty} ${currentGroupTab === GroupTabs.private && styles.unfold}`}>
-                        No prviate conversations
-                    </div>
-
-                    <div className={styles.see_all}>
-                        <a>See all</a>
                     </div>
 
                 </div>

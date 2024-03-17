@@ -16,7 +16,7 @@ export default function useDropdown(parentRef: React.RefObject<HTMLElement>): [b
     const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
     const handleClickOustide = (event: MouseEvent) => {
-        if (parentRef.current!.contains(event.target as HTMLElement) === false) {
+        if (parentRef.current?.contains(event.target as HTMLElement) === false) {
             setShowDropdown(false);
             document.removeEventListener("mousedown", handleClickOustide, true);
         }

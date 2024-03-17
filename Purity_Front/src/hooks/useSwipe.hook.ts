@@ -28,11 +28,11 @@ export default function useSwipe(elementRef: React.RefObject<HTMLElement>): [boo
         const [distance, setDistance] = useState<number>(0);
         const [swipeActive, setSwipeActive] = useState<boolean>(false);
         useEffect( () => {
-            elementRef.current!.addEventListener("mousedown", handleMouseDown, true);
-            elementRef.current!.addEventListener("touchstart", handleTouchStart, true);
+            elementRef.current?.addEventListener("mousedown", handleMouseDown, true);
+            elementRef.current?.addEventListener("touchstart", handleTouchStart, true);
             return () => {
-                elementRef.current!.removeEventListener("mousedown", handleMouseDown, true);
-                elementRef.current!.removeEventListener("touchstart", handleTouchStart, true);
+                elementRef.current?.removeEventListener("mousedown", handleMouseDown, true);
+                elementRef.current?.removeEventListener("touchstart", handleTouchStart, true);
             }
         }, []);
 

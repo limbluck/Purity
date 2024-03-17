@@ -28,15 +28,12 @@ import clientPictureURL8 from '../../assets/clients/client8.png'
 import { useEffect, useRef, useState } from 'react'
 
 import CourseThumbnail from '../utility/CourseThumbnail.component'
-
-import useSwipe from '../../hooks/useSwipe.hook'
-import useCourseThumbnailsRnd from '../../hooks/api/useCourseThumbnailsRnd.hook'
-import useBlogsThumbnailsRnd from '../../hooks/api/useBlogThumbnailsRnd.hook'
-
-
-import useCarousel from '../../hooks/useCarousel.hook'
 import BlogThumbnail from '../utility/BlogThumbnail.component'
 
+import useSwipe from '../../hooks/useSwipe.hook'
+import useCarousel from '../../hooks/useCarousel.hook'
+import useCourseThumbnailsRnd from '../../hooks/api/useCourseThumbnailsRnd.hook'
+import useBlogsThumbnailsRnd from '../../hooks/api/useBlogThumbnailsRnd.hook'
 
 export default function Home() {
 
@@ -45,11 +42,15 @@ export default function Home() {
         // #region Banner-related variables
 
             // State for class set logic in html
-                const [bannerCurrent, setBannerCurrent] = useState(1);
+                const [bannerCurrent, setBannerCurrent] = useState(0);
+                // Launch first banner background animation
+                useEffect(() => {
+                    setBannerCurrent(1);
+                }, [])
             // Const for 'next' and 'pervious' functions logic
                 const bannersAmount: number = 3;
             // Ref for 'next' and 'pervious' buttons click timeout
-                const bannerTimeout = useRef<boolean>(false)
+                const bannerOnTimeout = useRef<boolean>(false)
             // Banner section element ref to listen swipes on
                 const bannerRef = useRef<HTMLElement>(null);
             // Swipe distance value required for banner change
@@ -62,29 +63,29 @@ export default function Home() {
             // onClick for 'Next' button 
                 function bannerNext(): void {
 
-                    if (!bannerTimeout.current) {
+                    if (!bannerOnTimeout.current) {
                         
                         setBannerCurrent(bannerCurrent < bannersAmount ? bannerCurrent + 1 : 1);
 
-                        bannerTimeout.current = true;
+                        bannerOnTimeout.current = true;
 
                         setTimeout(() => {
-                            bannerTimeout.current = false
-                        }, 1100);
+                            bannerOnTimeout.current = false
+                        }, 1500);
                     }
                 }
             // onClick for 'Pervious' button 
                 function bannerPervious(): void {
 
-                    if (!bannerTimeout.current) {
+                    if (!bannerOnTimeout.current) {
 
                         setBannerCurrent(bannerCurrent > 1 ? bannerCurrent - 1 : bannersAmount);
 
-                        bannerTimeout.current = true;
+                        bannerOnTimeout.current = true;
 
                         setTimeout(() => {
-                            bannerTimeout.current = false
-                        }, 1100);
+                            bannerOnTimeout.current = false
+                        }, 1500);
                     }
                 }
 
@@ -192,8 +193,7 @@ export default function Home() {
             <h1 className={styles.hidden_header}>Welcome to Purity!</h1>
 
             <section className={styles.banner}
-                ref={bannerRef}
-            >
+                ref={bannerRef}>
 
                 <button className={`${styles.slide} ${styles.left}`}
                     onClick={bannerPervious}

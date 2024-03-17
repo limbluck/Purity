@@ -19,7 +19,7 @@ export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, 
         const api = new APIService()
 
     // Define states
-        const [status, setStatus] = useState<RequestStatus>(100);
+        const [status, setStatus] = useState<RequestStatus>(10);
         const [courses, setCourses] = useState<CourseThumbnail[]>([]);
 
     // Fetch function for useSWR
@@ -28,7 +28,7 @@ export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, 
         try {
 
             // Set status - loading
-            setStatus(300);
+            setStatus(10);
 
             // Fetch data
                 const responce = await fetch(url, init);
@@ -38,15 +38,15 @@ export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, 
                 // Set data in state
                     setCourses(responceData.data as CourseThumbnail[])
                 // Set status - success
-                    setStatus(200);
+                    setStatus(20);
             } else {
                 // Set status - backend error
-                setStatus(500);
+                setStatus(30);
             }
 
         } catch {
             // Set status - frontend error
-                setStatus(400);
+                setStatus(40);
         }
 
     }

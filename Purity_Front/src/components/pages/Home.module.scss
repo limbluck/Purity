@@ -9,12 +9,14 @@
     }
 }
 
-@keyframes bannerBackgroundAnimation {
-    from {
-        scale: 1;
-    }
+@keyframes bannerShowBackgroundAnimation {
     to {
         scale: 1.2;
+    }
+}
+@keyframes bannerHideBackgroundAnimation {
+    to {
+        scale: 1;
     }
 }
 
@@ -189,7 +191,7 @@
         
                 z-index: 2;
 
-                transition: opacity 200ms 1s ease-out, transform 200ms 1s ease-out,;
+                transition: opacity 200ms 1s ease-out, transform 300ms 1s ease-out,;
             }
 
             >.header {
@@ -264,14 +266,12 @@
             min-height: 100%;
         }
         &.shown>.background {
-            animation-name: bannerBackgroundAnimation;
-            animation-duration: 12s;
-            animation-fill-mode: forwards;
-            animation-timing-function: linear;
+            scale: 1.2;
+            transition: scale 12s linear;
         }
         &.hidden>.background {
             scale: 1;
-            transition: scale 12s ease-out;
+            transition: scale 0s 1s linear;
         }
     }
 }
