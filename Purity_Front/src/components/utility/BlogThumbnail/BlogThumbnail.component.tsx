@@ -1,8 +1,8 @@
 import styles from './BlogThumbnail.module.scss'
 
-import defaultImageURL from '../../assets/blog.png'
+import defaultImageURL from '../../../assets/blog.png'
 
-import APIService from '../../services/api.service';
+import APIService from '../../../services/api.service';
 
 export default function BlogThumbnail(props: {status: RequestStatus, blog?: BlogThumbnail | undefined}) {
 

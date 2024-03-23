@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import CourseThumbnail from "./CourseThumbnail.component";
 
 // Mock API service
-jest.mock('../../services/api.service', () => {
+jest.mock('../../../services/api.service', () => {
     return class {
         readonly ASSETS = "";
     }

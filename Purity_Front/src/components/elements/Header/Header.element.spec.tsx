@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 
 import Header from "./Header.element"
 import { MemoryRouter } from "react-router-dom";
-import { MyAuthContext } from "../../context/auth.context";
+import { MyAuthContext } from "../../../context/auth.context";
 
 describe('Basic tests', () => {
 

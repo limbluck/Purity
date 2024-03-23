@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.scss'
-import logoURL from '../../assets/logo.png'
-import { useAuthContext } from '../../context/auth.context'
+import logoURL from '../../../assets/logo.png'
+import { useAuthContext } from '../../../context/auth.context'
 import { Link, NavLink } from 'react-router-dom'
 
 export default function Sidebar() {

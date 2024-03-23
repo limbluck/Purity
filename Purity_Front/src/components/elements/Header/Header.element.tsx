@@ -1,9 +1,9 @@
 import styles from './Header.module.scss'
-import profilePhotoPlaceholderURL from '../../assets/profile-pic.jpg'
+import profilePhotoPlaceholderURL from '../../../assets/profile-pic.jpg'
 
-import { useAuthContext } from '../../context/auth.context'
+import { useAuthContext } from '../../../context/auth.context'
 import { useRef } from 'react'
-import useDropdown from '../../hooks/useDropdown.hook'
+import useDropdown from '../../../hooks/useDropdown.hook'
 import { Link } from 'react-router-dom'
 
 type Props = {

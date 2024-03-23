@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import styles from './Chatbar.module.scss';
-import useDropdown from '../../hooks/useDropdown.hook';
+import useDropdown from '../../../hooks/useDropdown.hook';
 
-import profilePicture from '../../assets/profile-pic.jpg';
-import chatUserPicture from '../../assets/chat-user.jpg';
+import profilePicture from '../../../assets/profile-pic.jpg';
+import chatUserPicture from '../../../assets/chat-user.jpg';
 
 type Props = {
     toggleChatbar(): void

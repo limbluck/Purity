@@ -1,11 +1,11 @@
 import styles from './App.module.scss'
 import { useState } from 'react';
 import { MyAuthContext } from './context/auth.context'
-import Header from './components/elements/Header.element'
-import Sidebar from './components/elements/Sidebar.element';
-import Home from './components/pages/Home.page';
-import Footer from './components/elements/Footer.element';
-import Chatbar from './components/elements/Chatbar.element';
+import Header from './components/elements/Header/Header.element'
+import Sidebar from './components/elements/Sidebar/Sidebar.element';
+import Home from './components/pages/Home/Home.page';
+import Footer from './components/elements/Footer/Footer.element';
+import Chatbar from './components/elements/Chatbar/Chatbar.element';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 export default function App() {
