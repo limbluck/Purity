@@ -6,8 +6,10 @@
 - Rented cloud server (timeweb.cloud):
     - OS: Ubuntu 22.04
     - Server: Nginx 1.18
-- Frontend: Angular 17
-- Backend: ASP.NET 7.0 MVC API on C#
+- Frontend: React 18 with TypeScript
+    - Animations: GSAP
+    - Tests: Jest
+- Backend: ASP.NET 7.0 MVC API
 - Database: MS SQL Server 16
 
 ## Done at the moment:

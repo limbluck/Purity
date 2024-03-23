@@ -43,6 +43,7 @@ export default function Header(props: Props) {
         function renderLanguageDropdown() {
             return (
                 <div className={styles.dropdown}
+                    data-testid="language-dropdown"
                     onClick={handleLanguageDropdownClick}>
 
                     <button tabIndex={0}>English</button>
@@ -69,6 +70,7 @@ export default function Header(props: Props) {
         function renderSearchDropdown() {
             return (
                 <div className={`${styles.dropdown} ${MyAuthContext.auth ? styles.authorized : ''}`}
+                    data-testid="search-dropdown"
                     onClick={handleSearchDropdownClick}>
 
                     <input className={styles.searchbar} type="text" placeholder="Search" />
@@ -86,6 +88,7 @@ export default function Header(props: Props) {
         function renderNotifications() {
             return (
                     <div className={`${styles.notifications} ${showNotificationsDropdown ? styles.active : ''}`}
+                        data-testid="notifications-button"
                         ref={notificationsRef}
                         onClick={handleNotificationsClick}>
 
@@ -103,6 +106,7 @@ export default function Header(props: Props) {
         function renderNotificationsDropdown() {
             return (
                 <div className={styles.dropdown}
+                    data-testid="notifications-dropdown"
                     onClick={handleNotificationsDropdownClick}>
 
                     <div className={styles.header}>
@@ -138,6 +142,7 @@ export default function Header(props: Props) {
         function renderChatButton() {
             return (
                 <div className={styles.chat}
+                    data-testid="chatbar-button"
                     onClick={handleChatButtonClick}>
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.476 10 7.747 0 4.272-4.48 7.748-9.986 7.748-.62 0-1.092-.046-1.759-.097-1 .776-1.774 1.403-3.485 1.962.26-1.383-.113-2.259-.514-3.259-2.383-1.505-4.256-3.411-4.256-6.354 0-4.271 4.486-7.747 10-7.747zm0-2c-6.627 0-12 4.363-12 9.747 0 3.13 1.816 5.916 4.641 7.699.867 2.167-1.084 4.008-3.143 4.502 3.085.266 6.776-.481 9.374-2.497 7.08.54 13.128-3.988 13.128-9.704 0-5.384-5.373-9.747-12-9.747z"/></svg>
@@ -158,6 +163,7 @@ export default function Header(props: Props) {
         function renderProfile() {
             return (
                 <div className={`${styles.profile} ${showProfileDropdown && styles.active}`}
+                    data-testid="profile-button"
                     ref={profileRef}
                     onClick={handleProfileClick}>
 
@@ -175,15 +181,16 @@ export default function Header(props: Props) {
         function renderProfileDropdown() {
             return (
                 <div className={styles.dropdown}
-                onClick={handleProfileDropdownClick}>
+                    data-testid="profile-dropdown"
+                    onClick={handleProfileDropdownClick}>
 
-                <a tabIndex={0}>Profile</a>
-                <div className={styles.separator}></div>
-                <a tabIndex={0}>Grades</a>
-                <a tabIndex={0}>Calendar</a>
-                <a tabIndex={0}>Files</a>
-                <div className={styles.separator}></div>
-                <a tabIndex={0} onClick={handleLogOutClick}>Log out</a>
+                    <a tabIndex={0}>Profile</a>
+                    <div className={styles.separator}></div>
+                    <a tabIndex={0}>Grades</a>
+                    <a tabIndex={0}>Calendar</a>
+                    <a tabIndex={0}>Files</a>
+                    <div className={styles.separator}></div>
+                    <a tabIndex={0} onClick={handleLogOutClick} data-testid="profile-dropdown-logout">Log out</a>
 
                 </div>
             )
@@ -199,6 +206,7 @@ export default function Header(props: Props) {
         function renderLogIn() {
             return (
                 <button className={styles.log_in}
+                    data-testid="login-button"
                     onClick={handleLogInClick}>
 
                     Log in
@@ -215,6 +223,7 @@ export default function Header(props: Props) {
         <header className={styles.header}>
 
             <button className={styles.sidebar}
+                data-testid="sidebar-button"
                 onClick={handleSidebarToggleClick}>
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M46.5,14h-41C4.7,14,4,13.3,4,12.5v-3C4,8.7,4.7,8,5.5,8h41C47.3,8,48,8.7,48,9.5v3C48,13.3,47.3,14,46.5,14z"/><path d="M46.5,28.9h-41c-0.8,0-1.5-0.7-1.5-1.5v-3C4,23.7,4.7,23,5.5,23h41c0.8,0,1.5,0.7,1.5,1.5v3C48,28.2,47.3,28.9,46.5,28.9z"/><path d="M46.5,44h-41C4.7,44,4,43.3,4,42.5v-3C4,38.7,4.7,38,5.5,38h41c0.8,0,1.5,0.7,1.5,1.5v3C48,43.3,47.3,44,46.5,44z"/></svg>
@@ -228,6 +237,7 @@ export default function Header(props: Props) {
             </nav>
 
             <div className={`${styles.language} ${showLanguageDropdown ? styles.active : ''}`}
+                data-testid="language-button"
                 ref={languageRef}
                 onClick={handleLanguageClick}>
 
@@ -240,6 +250,7 @@ export default function Header(props: Props) {
             <div className={`${styles.separator} ${MyAuthContext.auth ? styles.active : ''}`} />
 
             <div className={`${styles.search} ${showSearchDropdown ? styles.active : ''}`}
+                data-testid="search-button"
                 ref={searchRef}
                 onClick={handleSearchClick}>
 

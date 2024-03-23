@@ -19,16 +19,13 @@ export default function useBlogsThumbnailsRnd(amount: number): [RequestStatus, B
         const api = new APIService()
 
     // Define states
-        const [status, setStatus] = useState<RequestStatus>(100);
+        const [status, setStatus] = useState<RequestStatus>(10);
         const [blogs, setBlogs] = useState<BlogThumbnail[]>([]);
 
     // Fetch function for useSWR
     const fetchBlogs = async (url: string, init?: RequestInit) => {
 
         try {
-
-            // Set status - loading
-            setStatus(300);
 
             // Fetch data
                 const responce = await fetch(url, init);
@@ -38,15 +35,15 @@ export default function useBlogsThumbnailsRnd(amount: number): [RequestStatus, B
                 // Set data in state
                     setBlogs(responceData.data as BlogThumbnail[])
                 // Set status - success
-                    setStatus(200);
+                    setStatus(20);
             } else {
-                // Set status - backend error
-                setStatus(500);
+                // Set status - sql error
+                setStatus(30);
             }
 
         } catch {
-            // Set status - frontend error
-                setStatus(400);
+            // Set status - fetch error
+                setStatus(40);
         }
 
     }

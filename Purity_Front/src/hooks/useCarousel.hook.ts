@@ -22,7 +22,7 @@ gsap.registerPlugin(CustomEase);
  *   Carousel element must be a horizontal flexbox
  * 
  * @example
- *     <div>                                                 - element with carousel container
+ *     <div>                                                 - parent wrapper element with carousel container for gap calculations
  *
  *         <button onClick={() => {setPage(currentPage + 1)}}>   - button to set next page
  *         <button onClick={() => {setPage(currentPage - 1)}}>   - button to set pervious page
