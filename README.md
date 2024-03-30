@@ -15,8 +15,12 @@
 ## Done at the moment:
 
 - Frontend
-    - Home page
-    - About page
+    - Templates
+        - Header, Footer, Sidebar, Chatbar components
+        - Home, About pages
+    - Custom hooks
+        - useCarousel for carousel elements animations
+        - useSwipe for swipe detection
 
 - Backend
     - Basic access to database and static files via API
