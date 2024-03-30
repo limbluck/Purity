@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest --env=jsdom"
+    "jest": "jest --env=jsdom"
   },
   "jest": {
     "moduleNameMapper": {
@@ -26,10 +26,15 @@
     "preset": "ts-jest/presets/js-with-ts",
     "testEnvironment": "node",
     "transform": {
-      "node_modules/gsap/.+.js": ["ts-jest", { "tsconfig": "<rootDir>/tsconfig.json" }]
+      "node_modules/gsap/.+.js": [
+        "ts-jest",
+        {
+          "tsconfig": "<rootDir>/tsconfig.json"
+        }
+      ]
     },
     "transformIgnorePatterns": [
-        "node_modules/(?!gsap/.*)"
+      "node_modules/(?!gsap/.*)"
     ]
   },
   "babel": {

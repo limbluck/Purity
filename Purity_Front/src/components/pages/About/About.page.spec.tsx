@@ -1,15 +1,16 @@
 import { render } from "@testing-library/react";
-
-import Footer from "./Footer.element"
+import About from "./About.page";
 
 describe('Basic tests', () => {
 
-    test('Footer component renders', () => {
-    
+    test('About page renders', () => {
+
         // Tested component
-            const renderRef = render(<Footer />);
-    
+            const renderRef = render(
+                <About />
+            );
+
         // Tested component rendered
             expect(renderRef.container.innerHTML).toBeTruthy()
-    })
-})
+    });
+});

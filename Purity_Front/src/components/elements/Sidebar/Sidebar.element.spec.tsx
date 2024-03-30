@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { BrowserRouter } from "react-router-dom";
 
 import Sidebar from "./Sidebar.element";
-import { MyAuthContext } from "../../context/auth.context";
+import { MyAuthContext } from "../../../context/auth.context";
 
 describe('Basic tests', () => {
 

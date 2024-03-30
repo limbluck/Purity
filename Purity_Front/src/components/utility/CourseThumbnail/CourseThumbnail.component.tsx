@@ -1,7 +1,7 @@
 import styles from './CourseThumbnail.module.scss'
 
-import defaultImageURL from '../../assets/course.jpg'
-import APIService from '../../services/api.service';
+import defaultImageURL from '../../../assets/course.jpg'
+import APIService from '../../../services/api.service';
 
 export default function CourseThumbnail(props: {status: RequestStatus, course?: CourseThumbnail | undefined}) {
 
