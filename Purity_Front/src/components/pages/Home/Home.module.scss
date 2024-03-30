@@ -46,7 +46,7 @@
             
             background-attachment: fixed; 
             background-clip: border-box;
-            background-image:  url(../../assets/banner/banner-small.jpg);
+            background-image:  url(../../../assets/banner/banner-small.jpg);
             background-origin: border-box;
             background-position: center;
             background-repeat: no-repeat;
@@ -285,9 +285,6 @@
         overflow: hidden;
     }
     &.background_ {
-        &_transparent {
-            $color-background-dark: transparent;
-        }
         &_white {
             background-color: $color-background-light;
             box-shadow: $box-shadow-main;
