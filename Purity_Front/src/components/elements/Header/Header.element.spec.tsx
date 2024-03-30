@@ -2,7 +2,7 @@ import { act, fireEvent, screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom';
 
 import Header from "./Header.element"
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { MyAuthContext } from "../../../context/auth.context";
 
 describe('Basic tests', () => {
@@ -297,4 +297,45 @@ describe('Dropdowns', () => {
             expect(screen.queryByTestId('profile-dropdown')).not.toBeInTheDocument();
     });
 
+});
+
+describe('Router tests', () => {
+
+    test('Home link works', () => {
+
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route path='/' element={<></>}/>
+                    <Route path='/home' element={<div data-testid="42">Pass the test</div>}/>
+                </Routes>
+                <Header toggleSidebar={() => {}} toggleChatbar={() => {}}/>
+            </MemoryRouter>,
+        );
+
+        const homeLink = screen.getByTestId('home-link');
+
+        act(() => fireEvent.click(homeLink));
+
+        expect(screen.getByTestId('42')).toBeInTheDocument();
+    });
+
+    test('About link works', () => {
+
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Routes>
+                    <Route path='/' element={<></>}/>
+                    <Route path='/about' element={<div data-testid="42">Pass the test</div>}/>
+                </Routes>
+                <Header toggleSidebar={() => {}} toggleChatbar={() => {}}/>
+            </MemoryRouter>
+        );
+
+        const aboutLink = screen.getByTestId('about-link');
+
+        act(() => fireEvent.click(aboutLink));
+
+        expect(screen.getByTestId('42')).toBeInTheDocument();
+    });
 });
