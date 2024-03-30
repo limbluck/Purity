@@ -1,12 +1,13 @@
 import styles from './App.module.scss'
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { MyAuthContext } from './context/auth.context'
 import Header from './components/elements/Header/Header.element'
 import Sidebar from './components/elements/Sidebar/Sidebar.element';
 import Home from './components/pages/Home/Home.page';
+import About from './components/pages/About/About.page';
 import Footer from './components/elements/Footer/Footer.element';
 import Chatbar from './components/elements/Chatbar/Chatbar.element';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 export default function App() {
 
@@ -16,7 +17,7 @@ export default function App() {
 
     // #endregion
 
-    // #region Sidebar controls
+    // #region Sidebar toggle controls
 
         const [showSidebar, setShowSidebar] = useState(false);
         function toggleSidebar() {
@@ -27,7 +28,7 @@ export default function App() {
 
     // #endregion
 
-    // #region Chatbar controls
+    // #region Chatbar toggle controls
 
         const [showChatbar, setShowChatbar] = useState(false);
         function toggleChatbar() {
@@ -44,6 +45,26 @@ export default function App() {
                 </div>
             </div>
         )
+        }
+
+    // #endregion
+
+    // #region Wrapper section
+
+        // Scroll to top on route change
+        const Wrapper = (props: { children: React.ReactElement[] }) => {
+            const location = useLocation();
+            const wrapperRef = useRef<HTMLDivElement>(null);
+
+            useLayoutEffect(() => {
+                wrapperRef.current?.scrollTo(0, 0);
+            }, [location.pathname]);
+    
+            return (
+                <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`} ref={wrapperRef}>
+                    {props.children}
+                </div>
+            )
         }
 
     // #endregion
@@ -67,13 +88,14 @@ export default function App() {
 
             <div className={styles.header_spaceholder}></div>
 
-            <div className={`${styles.wrapper} ${showSidebar ? styles.sidebar_active: ''}`}>
+            <Wrapper>
                 <Routes>
                     <Route path='/home' element={<Home />}/>
+                    <Route path='/about' element={<About />}/>
                     <Route path='*' element={<Navigate to="/home" />} />
                 </Routes>
                 <Footer />
-            </div>
+            </Wrapper>
 
         </BrowserRouter>
         </MyAuthContext.Provider>

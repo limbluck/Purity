@@ -230,10 +230,10 @@ export default function Header(props: Props) {
             </button>
 
             <nav className={styles.navigation}>
-                <Link to='/home' tabIndex={0} draggable="false">Home</Link>
+                <Link to='/home' tabIndex={0} draggable="false" data-testid="home-link">Home</Link>
                 <a tabIndex={0} draggable="false">Courses</a>
                 <a tabIndex={0} draggable="false">Blogs</a>
-                <a tabIndex={0} draggable="false">About</a>
+                <Link to='/about' tabIndex={0} draggable="false" data-testid="about-link">About</Link>
             </nav>
 
             <div className={`${styles.language} ${showLanguageDropdown ? styles.active : ''}`}

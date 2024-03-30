@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Footer.module.scss'
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
                 </div>
 
                 <div className={`${styles.container} ${styles.about}`}>
-                    <a className={`${styles.header} ${styles.link}`}>ABOUT US</a>
+                    <Link to='/about' className={`${styles.header} ${styles.link}`} tabIndex={0} draggable="false" data-testid="about-link">ABOUT US</Link>
                     <p className={styles.about}>At the forefront of digital education, our company stands as a beacon of innovative learning. Committed to excellence, we curate and deliver top-tier educational courses. With a vision to democratize knowledge, we empower learners globally, bridging gaps and paving pathways to success in the digital era.</p>
                 </div>
             </div>
