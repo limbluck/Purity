@@ -21,7 +21,7 @@
             background-position: 50% 50%;
             background-repeat: no-repeat;
             background-size: cover;
-            box-shadow: $box-shadow-main;
+            box-shadow: 0 1px 4px rgba(#000000, 0.1);
         }
         @media screen and (max-width: 1140px) {
             width: clamp(240px, 30.7vw, 350px);
@@ -64,7 +64,7 @@
             line-height: 1.5;
             text-align: justify;
 
-            color: $color-background-light;
+            color: #ffffff;
 
             user-select: none;
             cursor: pointer;
@@ -96,7 +96,7 @@
                     cursor: pointer;
                 }
                 &.author:hover {
-                    text-decoration: underline $color-background-light;
+                    text-decoration: underline #ffffff;
                 }
                 &.date {
                     cursor: default;
@@ -118,10 +118,10 @@
     
                     opacity: 0;
                     border-radius: 0.429em;
-                    color: $color-background-light;
+                    color: #ffffff;
                     background-color: $color-title-background;
     
-                    transition: opacity $transition-time-standart ease;
+                    transition: opacity 150ms ease;
                 }
 
                 &::after {
@@ -145,7 +145,7 @@
                 width: 1em;
                 height: 1em;
                 
-                fill: $color-background-light;
+                fill: #ffffff;
             }
 
             >span {
@@ -153,7 +153,7 @@
                 line-height: 1.5;
                 line-height: 1.5;
 
-                color: $color-background-light;
+                color: #ffffff;
             }
 
         }
