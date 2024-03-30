@@ -15,15 +15,8 @@
 ## Done at the moment:
 
 - Frontend
-    - Templates:
-        - Header, Footer, Sidebar and Chatbar templates 
-        - Home page template
-    - Directives:
-        - Carousel directive
-        - Swipe deection directive
-        - Dropdown directive
-    - Services:
-        - API service to handle API requests
+    - Home page
+    - About page
 
 - Backend
     - Basic access to database and static files via API
