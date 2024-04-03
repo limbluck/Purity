@@ -1,8 +1,10 @@
-import { render, screen, act, fireEvent } from "@testing-library/react";
+/* eslint-disable no-empty-function */
+
+import { render, screen, act, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import Footer from "./Footer.element"
-import { MemoryRouter, Route, Router, Routes } from "react-router-dom";
+import Footer from './Footer.element';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 describe('Basic tests', () => {
 

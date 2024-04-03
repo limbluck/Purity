@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 enum RequestStatus {
     'loading' = 10,
     'success' = 20,

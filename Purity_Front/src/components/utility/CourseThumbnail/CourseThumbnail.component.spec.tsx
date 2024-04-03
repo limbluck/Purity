@@ -1,13 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import CourseThumbnail from "./CourseThumbnail.component";
+import CourseThumbnail from './CourseThumbnail.component';
 
 // Mock API service
 jest.mock('../../../services/api.service', () => {
     return class {
-        readonly ASSETS = "";
-    }
+        readonly ASSETS = '';
+    };
 });
 
 describe('Basic tests', () => {
@@ -25,7 +25,7 @@ describe('Basic tests', () => {
 
         // Expect imageURL to match mock course imageURL
             const image = screen.getByTestId('image');
-            expect(image).toHaveStyle(`background-image: url(test-file-stub)`)
+            expect(image).toHaveStyle('background-image: url(test-file-stub)');
     });
 
     test('CourseThumbnail component on status 20 success renders course data', () => {
@@ -38,7 +38,7 @@ describe('Basic tests', () => {
                 summary: 'Please enroll',
                 price: 999,
                 imageURL: 'mock-image'
-            }
+            };
 
         // Render tested component
             render(
@@ -67,7 +67,7 @@ describe('Basic tests', () => {
 
         // Expect imageURL to match mock course imageURL
             const image = screen.getByTestId('image');
-            expect(image).toHaveStyle(`background-image: url(${mockCourse.imageURL})`)
+            expect(image).toHaveStyle(`background-image: url(${mockCourse.imageURL})`);
     });
 
     test('CourseThumbnail component on status 20 success renders correct unsetted price', () => {
@@ -80,7 +80,7 @@ describe('Basic tests', () => {
                 summary: 'Please enroll',
                 price: undefined,
                 imageURL: 'mock-image'
-            }
+            };
 
         // Render tested component
             render(

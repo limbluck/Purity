@@ -1,16 +1,17 @@
-import styles from './Sidebar.module.scss'
-import logoURL from '../../../assets/logo.png'
-import { useAuthContext } from '../../../context/auth.context'
-import { Link, NavLink } from 'react-router-dom'
+import styles from './Sidebar.module.scss';
+import logoURL from '../../../assets/logo.png';
+import { useAuthContext } from '../../../context/auth.context';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
 
-    const MyAuthContext = useAuthContext()
+    const MyAuthContext = useAuthContext();
 
-    function routerNavLinkHome(props: {isActive: boolean}) {return props.isActive ? styles.active : ''}
+    function routerNavLinkHome(props: {isActive: boolean}) {return props.isActive ? styles.active : '';}
 
     function renderLinks() {
-        return (<>
+        return (
+            <>
             <nav className={styles.main}
                 data-testid="links-main">
 
@@ -37,7 +38,8 @@ export default function Sidebar() {
             </nav>
 
             <div className={styles.separator}></div>
-        </>)
+        </>
+        );
     }
 
     return (
@@ -55,5 +57,5 @@ export default function Sidebar() {
                 <a draggable="false">About</a>
             </nav>
         </div>
-    )
+    );
 }

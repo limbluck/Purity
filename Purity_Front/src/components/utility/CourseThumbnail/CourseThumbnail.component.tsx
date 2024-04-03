@@ -1,6 +1,6 @@
-import styles from './CourseThumbnail.module.scss'
+import styles from './CourseThumbnail.module.scss';
 
-import defaultImageURL from '../../../assets/course.jpg'
+import defaultImageURL from '../../../assets/course.jpg';
 import APIService from '../../../services/api.service';
 
 export default function CourseThumbnail(props: {status: RequestStatus, course?: CourseThumbnail | undefined}) {
@@ -11,17 +11,17 @@ export default function CourseThumbnail(props: {status: RequestStatus, course?: 
         if (course) {
 
             // Chop title
-                if (course.title.length > 33) course.title = course.title.substring(0, 30) + '...'
+                if (course.title.length > 33) course.title = course.title.substring(0, 30) + '...';
 
             // Chop summary
-                if (course.summary && course.summary.length > 99) course.summary = course.summary.substring(0, 96) + '...'
+                if (course.summary && course.summary.length > 99) course.summary = course.summary.substring(0, 96) + '...';
 
             // Chop category
-                if (course.category && course.category.length > 30) course.category = course.category.substring(0, 27) + '...'
+                if (course.category && course.category.length > 30) course.category = course.category.substring(0, 27) + '...';
         }
 
     // Inject API service
-        const api = new APIService()
+        const api = new APIService();
 
     // Render while course thumbnail is loading
         function LoadingCourseThumbnail() {
@@ -35,7 +35,7 @@ export default function CourseThumbnail(props: {status: RequestStatus, course?: 
                 </div>
 
             </div>
-        )}
+        );}
 
     // Render recieved course thumbnail
         function SuccessCourseThumbnail() {
@@ -67,23 +67,23 @@ export default function CourseThumbnail(props: {status: RequestStatus, course?: 
 
                 </div>
             </div>
-        )}
+        );}
 
     // Render if error occured
-        function ErrorCourseThumbnail() {return <></>}
+        function ErrorCourseThumbnail() {return <></>;}
 
     // Derermine render
     switch (props.status) {
         // Loading
             case 10:
-                return LoadingCourseThumbnail()
+                return LoadingCourseThumbnail();
         // Success
             case 20:
-                return SuccessCourseThumbnail()
+                return SuccessCourseThumbnail();
         // Error
             case 30:
             case 40:
             default:
-                return ErrorCourseThumbnail()
+                return ErrorCourseThumbnail();
     }
 }

@@ -15,7 +15,7 @@ enum ChatbarModes {
     settings = 'Settings',
     conversation = 'Conversation',
     search = 'Search'
-};
+}
 
 enum GroupTabs {
     none = 'None',
@@ -45,11 +45,11 @@ export default function Chatbar(props: Props) {
         }
 
         function handleButtonsContactsClick() {
-            setChatbarMode(ChatbarModes.contacts)
+            setChatbarMode(ChatbarModes.contacts);
         }
     
         function handleButtonsSettingsClick() {
-            setChatbarMode(ChatbarModes.settings)
+            setChatbarMode(ChatbarModes.settings);
         }
     
     // #endregion
@@ -65,7 +65,7 @@ export default function Chatbar(props: Props) {
             }
 
             function handleHeaderSearchClick() {
-                setChatbarMode(ChatbarModes.search)
+                setChatbarMode(ChatbarModes.search);
             }
 
     // #endregion
@@ -74,9 +74,9 @@ export default function Chatbar(props: Props) {
 
         const [currentGroupTab, setCurrentGroupTab] = useState<GroupTabs>(GroupTabs.none);
 
-        function handleGroupStarredClick() {currentGroupTab === GroupTabs.starred ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.starred)}
-        function handleGroupPrivateClick() {currentGroupTab === GroupTabs.private ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.private)}
-        function handleGroupGroupClick() {currentGroupTab === GroupTabs.group ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.group)}
+        function handleGroupStarredClick() {currentGroupTab === GroupTabs.starred ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.starred);}
+        function handleGroupPrivateClick() {currentGroupTab === GroupTabs.private ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.private);}
+        function handleGroupGroupClick() {currentGroupTab === GroupTabs.group ? setCurrentGroupTab(GroupTabs.none) : setCurrentGroupTab(GroupTabs.group);}
 
     // #endregion
 
@@ -84,18 +84,18 @@ export default function Chatbar(props: Props) {
 
         const [contactsMode, setContactsMode] = useState<ContactsModes>(ContactsModes.contacts);
 
-        function handleContactsClick() {setContactsMode(ContactsModes.contacts)}
-        function handleRequestsClick() {setContactsMode(ContactsModes.requests)}
+        function handleContactsClick() {setContactsMode(ContactsModes.contacts);}
+        function handleRequestsClick() {setContactsMode(ContactsModes.requests);}
 
     // #endregion
 
     // #region Conversation mode
 
-            function handleConversationClick() {setChatbarMode(ChatbarModes.conversation)}
+            function handleConversationClick() {setChatbarMode(ChatbarModes.conversation);}
 
             // Menu dropdown
                 const conversationMenuRef = useRef(null);
-                const [showConversationMenuDropdown, toggleConversationMenuDropdown] = useDropdown(conversationMenuRef)
+                const [showConversationMenuDropdown, toggleConversationMenuDropdown] = useDropdown(conversationMenuRef);
                 function handleConversationMenuClick() {
                     toggleConversationMenuDropdown();
                 }
@@ -118,7 +118,7 @@ export default function Chatbar(props: Props) {
                             <a tabIndex={0}>Delete</a>
 
                         </div>
-                    )
+                    );
                 }
 
             // Conversation status
@@ -127,12 +127,12 @@ export default function Chatbar(props: Props) {
                 const [conversationMuted, setConversationMuted] = useState<boolean>(false);
                 const [conversationBlocked, setConversationBlocked] = useState<boolean>(false);
 
-                function handleStarClick() {setConversationStarred(true)}
-                function handleUnstarClick() {setConversationStarred(false)}
-                function handleMuteClick() {setConversationMuted(true)}
-                function handleUnmuteClick() {setConversationMuted(false)}
-                function handleBlockClick() {setConversationBlocked(true)}
-                function handleUnblockClick() {setConversationBlocked(false)}
+                function handleStarClick() {setConversationStarred(true);}
+                function handleUnstarClick() {setConversationStarred(false);}
+                function handleMuteClick() {setConversationMuted(true);}
+                function handleUnmuteClick() {setConversationMuted(false);}
+                function handleBlockClick() {setConversationBlocked(true);}
+                function handleUnblockClick() {setConversationBlocked(false);}
 
 
     // #endregion
@@ -522,5 +522,5 @@ export default function Chatbar(props: Props) {
             </div>
 
         </>
-    )
+    );
 }

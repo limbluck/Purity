@@ -1,6 +1,6 @@
-import styles from './BlogThumbnail.module.scss'
+import styles from './BlogThumbnail.module.scss';
 
-import defaultImageURL from '../../../assets/blog.png'
+import defaultImageURL from '../../../assets/blog.png';
 
 import APIService from '../../../services/api.service';
 
@@ -12,19 +12,19 @@ export default function BlogThumbnail(props: {status: RequestStatus, blog?: Blog
         if (blog) {
 
             // Chop title
-                if (blog.title.length > 30) blog.title = blog.title.substring(0, 27) + '...'
+                if (blog.title.length > 30) blog.title = blog.title.substring(0, 27) + '...';
 
             // Chop author
-                if (blog.author.length > 20) blog.author = blog.author.substring(0, 17) + '...'
+                if (blog.author.length > 20) blog.author = blog.author.substring(0, 17) + '...';
         }
 
     // Inject API service
-        const api = new APIService()
+        const api = new APIService();
 
     // Render while blog thumbnail is loading
         function LoadingBlogThumbnail() {
             return (
-                <div className={`${styles.blog} ${styles.loading}`} style={{backgroundImage: `url()`}} data-testid="image">
+                <div className={`${styles.blog} ${styles.loading}`} style={{backgroundImage: 'url()'}} data-testid="image">
                     <a className={styles.title} data-testid="title">Loading blogs ...</a>
                     <div className={styles.container}>
                         <div className={`${styles.info} ${styles.author}`}>
@@ -39,7 +39,7 @@ export default function BlogThumbnail(props: {status: RequestStatus, blog?: Blog
                         </div>                        
                     </div>
                 </div>
-        )}
+        );}
 
     // Render recieved blog thumbnail
         function SuccessBlogThumbnail() {
@@ -59,10 +59,10 @@ export default function BlogThumbnail(props: {status: RequestStatus, blog?: Blog
                         </div>                        
                     </div>
                 </div>
-        )}
+        );}
 
     // Render if error occured
-        function ErrorBlogThumbnail() {return <></>}
+        function ErrorBlogThumbnail() {return <></>;}
 
     // Derermine render
         switch (props.status) {

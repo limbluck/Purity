@@ -1,9 +1,11 @@
-import { screen, render } from "@testing-library/react";
-import '@testing-library/jest-dom';
-import { BrowserRouter } from "react-router-dom";
+/* eslint-disable no-empty-function */
 
-import Sidebar from "./Sidebar.element";
-import { MyAuthContext } from "../../../context/auth.context";
+import { screen, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import Sidebar from './Sidebar.element';
+import { MyAuthContext } from '../../../context/auth.context';
 
 describe('Basic tests', () => {
 
@@ -17,7 +19,7 @@ describe('Basic tests', () => {
             );
 
         // Tested component rendered
-            expect(renderRef.container.innerHTML).toBeTruthy()
+            expect(renderRef.container.innerHTML).toBeTruthy();
     });
 });
 

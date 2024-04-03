@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import About from "./About.page";
+import { render } from '@testing-library/react';
+import About from './About.page';
 
 describe('Basic tests', () => {
 
@@ -11,6 +11,6 @@ describe('Basic tests', () => {
             );
 
         // Tested component rendered
-            expect(renderRef.container.innerHTML).toBeTruthy()
+            expect(renderRef.container.innerHTML).toBeTruthy();
     });
 });

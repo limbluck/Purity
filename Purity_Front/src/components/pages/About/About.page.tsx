@@ -1,25 +1,25 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import styles from './About.module.scss'
+import { useEffect, useRef } from 'react';
+import styles from './About.module.scss';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import useCarousel from '../../../hooks/useCarousel.hook';
 
-import teacherPictureURL1 from '../../../assets/teachers/teacher1.jpg'
-import teacherPictureURL2 from '../../../assets/teachers/teacher2.jpg'
-import teacherPictureURL3 from '../../../assets/teachers/teacher3.jpg'
-import teacherPictureURL4 from '../../../assets/teachers/teacher4.jpg'
-import teacherPictureURL5 from '../../../assets/teachers/teacher5.jpg'
-import teacherPictureURL6 from '../../../assets/teachers/teacher6.jpg'
-import teacherPictureURL7 from '../../../assets/teachers/teacher7.jpg'
-import teacherPictureURL8 from '../../../assets/teachers/teacher8.jpg'
-import clientPictureURL1 from '../../../assets/clients/client1.png'
-import clientPictureURL2 from '../../../assets/clients/client2.png'
-import clientPictureURL3 from '../../../assets/clients/client3.png'
-import clientPictureURL4 from '../../../assets/clients/client4.png'
-import clientPictureURL5 from '../../../assets/clients/client5.png'
-import clientPictureURL6 from '../../../assets/clients/client6.png'
-import clientPictureURL7 from '../../../assets/clients/client7.png'
-import clientPictureURL8 from '../../../assets/clients/client8.png'
+import teacherPictureURL1 from '../../../assets/teachers/teacher1.jpg';
+import teacherPictureURL2 from '../../../assets/teachers/teacher2.jpg';
+import teacherPictureURL3 from '../../../assets/teachers/teacher3.jpg';
+import teacherPictureURL4 from '../../../assets/teachers/teacher4.jpg';
+import teacherPictureURL5 from '../../../assets/teachers/teacher5.jpg';
+import teacherPictureURL6 from '../../../assets/teachers/teacher6.jpg';
+import teacherPictureURL7 from '../../../assets/teachers/teacher7.jpg';
+import teacherPictureURL8 from '../../../assets/teachers/teacher8.jpg';
+import clientPictureURL1 from '../../../assets/clients/client1.png';
+import clientPictureURL2 from '../../../assets/clients/client2.png';
+import clientPictureURL3 from '../../../assets/clients/client3.png';
+import clientPictureURL4 from '../../../assets/clients/client4.png';
+import clientPictureURL5 from '../../../assets/clients/client5.png';
+import clientPictureURL6 from '../../../assets/clients/client6.png';
+import clientPictureURL7 from '../../../assets/clients/client7.png';
+import clientPictureURL8 from '../../../assets/clients/client8.png';
 
 export default function About() {
 
@@ -32,7 +32,7 @@ export default function About() {
 
             function handleValueButtonClick(valueNumber: number) {
                 setValuesCurrentTab(valueNumber);
-            };
+            }
 
         // #endregion 
 
@@ -49,10 +49,11 @@ export default function About() {
             // Get values on resize
                 useEffect(() => {
                     valuesWindowSize.current = window.innerWidth;
-                    valuesButtonsWidth.current = Number(window.getComputedStyle(valuesButtonsRef.current! as Element).getPropertyValue("width").slice(0, -2));
-                    valuesButtonsBarWidth.current = Number(window.getComputedStyle(valuesButtonsBarRef.current! as Element).getPropertyValue("width").slice(0, -2));
+                    valuesButtonsWidth.current = Number(window.getComputedStyle(valuesButtonsRef.current! as Element).getPropertyValue('width').slice(0, -2));
+                    valuesButtonsBarWidth.current = Number(window.getComputedStyle(valuesButtonsBarRef.current! as Element).getPropertyValue('width').slice(0, -2));
                     window.addEventListener('resize', handleResize);
                     return () => window.removeEventListener('resize', handleResize);
+
                 }, [valuesCurrentTab]);
 
                 const { contextSafe } = useGSAP();
@@ -63,20 +64,20 @@ export default function About() {
 
                         gsap.set(valuesButtonsBarRef.current, {
                             left: `${(valuesCurrentTab - 1) * 20}%`
-                        })
+                        });
                     }
                     else {
 
                         gsap.set(valuesButtonsBarRef.current, {
                             left: `${ (valuesButtonsWidth.current / 9 + 8) * (valuesCurrentTab - 1) - 1}px` // Width, padding, border
-                        })
+                        });
                     }
                 });
 
                 function handleResize() {
                     valuesWindowSize.current = window.innerWidth;
-                    valuesButtonsWidth.current = Number(window.getComputedStyle(valuesButtonsRef.current! as Element).getPropertyValue("width").slice(0, -2));
-                    valuesButtonsBarWidth.current = Number(window.getComputedStyle(valuesButtonsBarRef.current! as Element).getPropertyValue("width").slice(0, -2));
+                    valuesButtonsWidth.current = Number(window.getComputedStyle(valuesButtonsRef.current! as Element).getPropertyValue('width').slice(0, -2));
+                    valuesButtonsBarWidth.current = Number(window.getComputedStyle(valuesButtonsBarRef.current! as Element).getPropertyValue('width').slice(0, -2));
                     valuesResizeButtonsBar();
                 }
 
@@ -99,7 +100,7 @@ export default function About() {
                                 left: '0%',
                                 ease: 'power1.out',
                                 duration: 0.25 / 2
-                            })
+                            });
                     }
                     else if (valuesCurrentTab === 5 && valuesLastTab.current === 1) {
                         gsap.timeline()
@@ -115,14 +116,14 @@ export default function About() {
                             left: '80%',
                             ease: 'power1.out',
                             duration: 0.25 / 2
-                        })
+                        });
                     }
                     else {
                         gsap.to(valuesButtonsBarRef.current, {
                             left: `${(valuesCurrentTab - 1) * 20}%`,
                             ease: 'power1.out',
                             duration: 0.25
-                        })
+                        });
                     }
 
                 } else {
@@ -141,7 +142,7 @@ export default function About() {
                                 left: '0%',
                                 ease: 'power1.out',
                                 duration: 0.25 / 2
-                            })
+                            });
                     }
                     else if (valuesCurrentTab === 5 && valuesLastTab.current === 1) {
                         gsap.timeline()
@@ -151,20 +152,20 @@ export default function About() {
                                 duration: 0.25 / 2
                             })
                             .set(valuesButtonsBarRef.current, {
-                                left: `100%`,
+                                left: '100%',
                             })
                             .to(valuesButtonsBarRef.current, {
                                 left: `${ (valuesButtonsWidth.current / 9 + 8) * (valuesCurrentTab - 1) - 1}px`, // Width, padding, border
                                 ease: 'power1.out',
                                 duration: 0.25 / 2
-                            })
+                            });
                     }
                     else {
                         gsap.to(valuesButtonsBarRef.current, {
                             left: `${ (valuesButtonsWidth.current / 9 + 8) * (valuesCurrentTab - 1) - 1}px`, // Width, padding, border
                             ease: 'power1.out',
                             duration: 0.25
-                        })
+                        });
                     }
 
                 }
@@ -193,15 +194,15 @@ export default function About() {
                         <div className={styles.buttons} ref={valuesButtonsRef}>
                             <div ref={valuesButtonsBarRef}></div>
                             <button className={`${valuesCurrentTab === 1 && styles.active}`}
-                                onClick={() => {handleValueButtonClick(1)}}>Accessibility</button>
+                                onClick={() => {handleValueButtonClick(1);}}>Accessibility</button>
                             <button className={`${valuesCurrentTab === 2 && styles.active}`}
-                                onClick={() => {handleValueButtonClick(2)}}>Community</button>
+                                onClick={() => {handleValueButtonClick(2);}}>Community</button>
                             <button className={`${valuesCurrentTab === 3 && styles.active}`}
-                                onClick={() => {handleValueButtonClick(3)}}>Empowerment</button>
+                                onClick={() => {handleValueButtonClick(3);}}>Empowerment</button>
                             <button className={`${valuesCurrentTab === 4 && styles.active}`}
-                                onClick={() => {handleValueButtonClick(4)}}>Excellence</button>
+                                onClick={() => {handleValueButtonClick(4);}}>Excellence</button>
                             <button className={`${valuesCurrentTab === 5 && styles.active}`}
-                                onClick={() => {handleValueButtonClick(5)}}>Innovation</button>
+                                onClick={() => {handleValueButtonClick(5);}}>Innovation</button>
                         </div>
                         <div className={styles.container}>
                             <div ref={valuesCarouselRef}>
@@ -323,5 +324,5 @@ export default function About() {
                 </div>
             </section>
         </>
-    )
+    );
 }

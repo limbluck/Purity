@@ -1,7 +1,7 @@
-import styles from './App.module.scss'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { MyAuthContext } from './context/auth.context'
-import Header from './components/elements/Header/Header.element'
+import styles from './App.module.scss';
+import { useEffect, useRef, useState } from 'react';
+import { MyAuthContext } from './context/auth.context';
+import Header from './components/elements/Header/Header.element';
 import Sidebar from './components/elements/Sidebar/Sidebar.element';
 import Home from './components/pages/Home/Home.page';
 import About from './components/pages/About/About.page';
@@ -21,7 +21,7 @@ function Wrapper(props: { showSidebar: boolean, children: React.ReactElement[] }
         <div className={`${styles.wrapper} ${props.showSidebar ? styles.sidebar_active: ''}`} ref={wrapperRef}>
             {props.children}
         </div>
-    )
+    );
 }
 
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
         function toggleSidebar() {
         showSidebar ?
             setShowSidebar(false) :
-            setShowSidebar(true)
+            setShowSidebar(true);
         }
 
     // #endregion
@@ -49,7 +49,7 @@ export default function App() {
         function toggleChatbar() {
         showChatbar ?
             setShowChatbar(false) :
-            setShowChatbar(true)
+            setShowChatbar(true);
         }
 
         function renderChatbar() {
@@ -59,7 +59,7 @@ export default function App() {
                 <Chatbar toggleChatbar={toggleChatbar}/>
                 </div>
             </div>
-        )
+        );
         }
 
     // #endregion
@@ -95,6 +95,6 @@ export default function App() {
         </BrowserRouter>
         </MyAuthContext.Provider>
         </>
-    )
+    );
 }
 
