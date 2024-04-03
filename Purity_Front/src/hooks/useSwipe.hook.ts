@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * @description - Hook for swipe distance tracking
@@ -28,12 +28,12 @@ export default function useSwipe(elementRef: React.RefObject<HTMLElement>): [boo
         const [distance, setDistance] = useState<number>(0);
         const [swipeActive, setSwipeActive] = useState<boolean>(false);
         useEffect( () => {
-            elementRef.current?.addEventListener("mousedown", handleMouseDown, true);
-            elementRef.current?.addEventListener("touchstart", handleTouchStart, true);
+            elementRef.current?.addEventListener('mousedown', handleMouseDown, true);
+            elementRef.current?.addEventListener('touchstart', handleTouchStart, true);
             return () => {
-                elementRef.current?.removeEventListener("mousedown", handleMouseDown, true);
-                elementRef.current?.removeEventListener("touchstart", handleTouchStart, true);
-            }
+                elementRef.current?.removeEventListener('mousedown', handleMouseDown, true);
+                elementRef.current?.removeEventListener('touchstart', handleTouchStart, true);
+            };
         }, []);
 
     // #endregion 
@@ -47,9 +47,9 @@ export default function useSwipe(elementRef: React.RefObject<HTMLElement>): [boo
                 setSwipeActive(true);
                 setDistance(0);
 
-                document.addEventListener("mousemove", handleMouseMove,  true);
-                document.addEventListener("mouseup", handleMouseUp,  true);
-            }
+                document.addEventListener('mousemove', handleMouseMove,  true);
+                document.addEventListener('mouseup', handleMouseUp,  true);
+            };
 
         // Stream distance values from mouse event
 
@@ -60,10 +60,10 @@ export default function useSwipe(elementRef: React.RefObject<HTMLElement>): [boo
         // Delete mouse event listeners on mouseup
 
             const handleMouseUp = () => {
-                document.removeEventListener("mousemove", handleMouseMove,  true);
-                document.removeEventListener("mouseup", handleMouseUp,  true);
+                document.removeEventListener('mousemove', handleMouseMove,  true);
+                document.removeEventListener('mouseup', handleMouseUp,  true);
                 setSwipeActive(false);
-            }
+            };
 
     // #endregion 
 
@@ -76,49 +76,49 @@ export default function useSwipe(elementRef: React.RefObject<HTMLElement>): [boo
                 setSwipeActive(true);
                 setDistance(0);
 
-                document.addEventListener("touchmove", handleTouchMove,  true);
-                document.addEventListener("touchend", handleTouchEnd,  true);
-                document.addEventListener("touchcancel", handleTouchCancel,  true);
-            }
+                document.addEventListener('touchmove', handleTouchMove,  true);
+                document.addEventListener('touchend', handleTouchEnd,  true);
+                document.addEventListener('touchcancel', handleTouchCancel,  true);
+            };
 
         // Stream distance values from mouse event
 
             const handleTouchMove = (event: TouchEvent) => {
                 setDistance(downPoint - event.touches[0].clientX);
-            }
+            };
 
         // Delete touch event listeners on touchend
 
             const handleTouchEnd = () => {
-                document.removeEventListener("touchmove", handleTouchMove,  true);
-                document.removeEventListener("touchend", handleTouchEnd,  true);
-                document.removeEventListener("touchcancel", handleTouchCancel,  true);
+                document.removeEventListener('touchmove', handleTouchMove,  true);
+                document.removeEventListener('touchend', handleTouchEnd,  true);
+                document.removeEventListener('touchcancel', handleTouchCancel,  true);
                 setSwipeActive(false);
-            }
+            };
 
         // Delete touch event listeners on touchcancel
 
             const handleTouchCancel = () => {
-                document.removeEventListener("touchmove", handleTouchMove,  true);
-                document.removeEventListener("touchend", handleTouchEnd,  true);
-                document.removeEventListener("touchcancel", handleTouchCancel,  true);
+                document.removeEventListener('touchmove', handleTouchMove,  true);
+                document.removeEventListener('touchend', handleTouchEnd,  true);
+                document.removeEventListener('touchcancel', handleTouchCancel,  true);
                 setSwipeActive(false);
-            }
+            };
 
     // #endregion 
 
     // #region Stopper function to call when listener is no longer needed
 
         const stopListener = useCallback( () => {
-            document.removeEventListener("mousemove", handleMouseMove,  true);
-            document.removeEventListener("mouseup", handleMouseUp,  true);
-            document.removeEventListener("touchmove", handleTouchMove,  true);
-            document.removeEventListener("touchend", handleTouchEnd,  true);
-            document.removeEventListener("touchcancel", handleTouchCancel,  true);
+            document.removeEventListener('mousemove', handleMouseMove,  true);
+            document.removeEventListener('mouseup', handleMouseUp,  true);
+            document.removeEventListener('touchmove', handleTouchMove,  true);
+            document.removeEventListener('touchend', handleTouchEnd,  true);
+            document.removeEventListener('touchcancel', handleTouchCancel,  true);
             setSwipeActive(false);
-        }, [])
+        }, []);
 
     // #endregion 
 
-        return [swipeActive, distance, stopListener]
+        return [swipeActive, distance, stopListener];
 }

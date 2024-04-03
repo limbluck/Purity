@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext } from 'react';
 
 // Auth context model
     export type AuthContext = {
@@ -9,6 +9,7 @@ import { createContext, useContext } from "react"
 // Mock auth via context to handle global auth state
     export const MyAuthContext = createContext<AuthContext>({
         auth: false,
+        // eslint-disable-next-line no-empty-function
         setAuth: () => {}
-    })
-    export const useAuthContext = () => useContext(MyAuthContext)
+    });
+    export const useAuthContext = () => useContext(MyAuthContext);

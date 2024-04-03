@@ -1,7 +1,9 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+/* eslint-disable no-empty-function */
+
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import Chatbar from "./Chatbar.element"
+import Chatbar from './Chatbar.element';
 
 describe('Basic tests', () => {
 
@@ -11,7 +13,7 @@ describe('Basic tests', () => {
             const renderRef = render(<Chatbar toggleChatbar={() => {}} />);
 
         // Tested component rendered
-            expect(renderRef.container.innerHTML).toBeTruthy()
+            expect(renderRef.container.innerHTML).toBeTruthy();
     });
 
     test('Default tabs is active on render', () => {
@@ -57,7 +59,7 @@ describe('Buttons section', () => {
             const closeButton = screen.getByTestId('buttons-close');
 
         // Click close button
-            act(() => {fireEvent.click(closeButton)});
+            act(() => {fireEvent.click(closeButton);});
 
         // Expect mock function to be called once
             expect(toggleFunc.mock.calls.length).toBe(1);
@@ -96,7 +98,7 @@ describe('Buttons section', () => {
             });
 
         // Expect state not to be default on 249 ms
-            act(() => jest.advanceTimersByTime(249))
+            act(() => jest.advanceTimersByTime(249));
 
             expect(defaultHeader)     .not.toHaveClass('active');
             expect(contactsHeader)        .toHaveClass('active');
@@ -110,7 +112,7 @@ describe('Buttons section', () => {
             expect(conversationMain)  .not.toHaveClass('active');
 
         // Expect state to be default on 250 ms
-            act(() => jest.advanceTimersByTime(1))
+            act(() => jest.advanceTimersByTime(1));
 
             expect(defaultHeader)         .toHaveClass('active');
             expect(contactsHeader)    .not.toHaveClass('active');

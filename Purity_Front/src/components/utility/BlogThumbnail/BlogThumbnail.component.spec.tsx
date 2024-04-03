@@ -1,13 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import BlogThumbnail from "./BlogThumbnail.component";
+import BlogThumbnail from './BlogThumbnail.component';
 
 // Mock API service
     jest.mock('../../../services/api.service', () => {
         return class {
-            readonly ASSETS = "";
-        }
+            readonly ASSETS = '';
+        };
     });
 
 describe('Basic tests', () => {
@@ -33,7 +33,7 @@ describe('Basic tests', () => {
 
         // Expect imageURL to match mock blog imageURL
             const image = screen.getByTestId('image');
-            expect(image).toHaveStyle(`background-image: url()`)
+            expect(image).toHaveStyle('background-image: url()');
     });
 
     test('BlogThumbnail component on status 20 success renders blog data', () => {
@@ -44,7 +44,7 @@ describe('Basic tests', () => {
                 author: 'Mock Author',
                 created: '01/01/1900',
                 imageURL: 'mock-url'
-            }
+            };
 
         // Render tested component
             render(
@@ -65,7 +65,7 @@ describe('Basic tests', () => {
 
         // Expect imageURL to match mock blog imageURL
             const image = screen.getByTestId('image');
-            expect(image).toHaveStyle(`background-image: url(${mockBlog.imageURL})`)
+            expect(image).toHaveStyle(`background-image: url(${mockBlog.imageURL})`);
     });
 
     test('BlogThumbnail component on status 30 sql error not renders', () => {

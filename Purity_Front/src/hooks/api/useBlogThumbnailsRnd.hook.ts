@@ -1,6 +1,6 @@
-import { useState } from "react";
-import useSWR from "swr";
-import APIService from "../../services/api.service";
+import { useState } from 'react';
+import useSWR from 'swr';
+import APIService from '../../services/api.service';
 
 /**
  * @description - Hook to get custom amount of blogs thumbnails through backend API request
@@ -16,7 +16,7 @@ import APIService from "../../services/api.service";
 export default function useBlogsThumbnailsRnd(amount: number): [RequestStatus, BlogThumbnail[]] {
 
     // Inject API service
-        const api = new APIService()
+        const api = new APIService();
 
     // Define states
         const [status, setStatus] = useState<RequestStatus>(10);
@@ -33,7 +33,7 @@ export default function useBlogsThumbnailsRnd(amount: number): [RequestStatus, B
 
             if (responceData.success) {
                 // Set data in state
-                    setBlogs(responceData.data as BlogThumbnail[])
+                    setBlogs(responceData.data as BlogThumbnail[]);
                 // Set status - success
                     setStatus(20);
             } else {
@@ -46,10 +46,10 @@ export default function useBlogsThumbnailsRnd(amount: number): [RequestStatus, B
                 setStatus(40);
         }
 
-    }
+    };
 
     // Fetch blogs thumbnails
-        const {} = useSWR(api.BlogsThumbnailsRnd(amount), fetchBlogs)
+        useSWR(api.BlogsThumbnailsRnd(amount), fetchBlogs);
 
-    return [status, blogs]
+    return [status, blogs];
 }

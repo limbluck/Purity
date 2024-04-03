@@ -1,39 +1,39 @@
-import styles from './Home.module.scss'
+import styles from './Home.module.scss';
 
-import bannerPictureURL1 from '../../../assets/banner/banner1.jpg'
-import bannerPictureURL2 from '../../../assets/banner/banner2.jpg'
-import bannerPictureURL3 from '../../../assets/banner/banner3.jpg'
-import teacherPictureURL1 from '../../../assets/teachers/teacher1.jpg'
-import teacherPictureURL2 from '../../../assets/teachers/teacher2.jpg'
-import teacherPictureURL3 from '../../../assets/teachers/teacher3.jpg'
-import teacherPictureURL4 from '../../../assets/teachers/teacher4.jpg'
-import teacherPictureURL5 from '../../../assets/teachers/teacher5.jpg'
-import teacherPictureURL6 from '../../../assets/teachers/teacher6.jpg'
-import teacherPictureURL7 from '../../../assets/teachers/teacher7.jpg'
-import teacherPictureURL8 from '../../../assets/teachers/teacher8.jpg'
+import bannerPictureURL1 from '../../../assets/banner/banner1.jpg';
+import bannerPictureURL2 from '../../../assets/banner/banner2.jpg';
+import bannerPictureURL3 from '../../../assets/banner/banner3.jpg';
+import teacherPictureURL1 from '../../../assets/teachers/teacher1.jpg';
+import teacherPictureURL2 from '../../../assets/teachers/teacher2.jpg';
+import teacherPictureURL3 from '../../../assets/teachers/teacher3.jpg';
+import teacherPictureURL4 from '../../../assets/teachers/teacher4.jpg';
+import teacherPictureURL5 from '../../../assets/teachers/teacher5.jpg';
+import teacherPictureURL6 from '../../../assets/teachers/teacher6.jpg';
+import teacherPictureURL7 from '../../../assets/teachers/teacher7.jpg';
+import teacherPictureURL8 from '../../../assets/teachers/teacher8.jpg';
 
-import rewiewsPictureURL1 from '../../../assets/reviews/review1.jpg'
-import rewiewsPictureURL2 from '../../../assets/reviews/review2.jpg'
-import rewiewsPictureURL3 from '../../../assets/reviews/review3.jpg'
+import rewiewsPictureURL1 from '../../../assets/reviews/review1.jpg';
+import rewiewsPictureURL2 from '../../../assets/reviews/review2.jpg';
+import rewiewsPictureURL3 from '../../../assets/reviews/review3.jpg';
 
-import clientPictureURL1 from '../../../assets/clients/client1.png'
-import clientPictureURL2 from '../../../assets/clients/client2.png'
-import clientPictureURL3 from '../../../assets/clients/client3.png'
-import clientPictureURL4 from '../../../assets/clients/client4.png'
-import clientPictureURL5 from '../../../assets/clients/client5.png'
-import clientPictureURL6 from '../../../assets/clients/client6.png'
-import clientPictureURL7 from '../../../assets/clients/client7.png'
-import clientPictureURL8 from '../../../assets/clients/client8.png'
+import clientPictureURL1 from '../../../assets/clients/client1.png';
+import clientPictureURL2 from '../../../assets/clients/client2.png';
+import clientPictureURL3 from '../../../assets/clients/client3.png';
+import clientPictureURL4 from '../../../assets/clients/client4.png';
+import clientPictureURL5 from '../../../assets/clients/client5.png';
+import clientPictureURL6 from '../../../assets/clients/client6.png';
+import clientPictureURL7 from '../../../assets/clients/client7.png';
+import clientPictureURL8 from '../../../assets/clients/client8.png';
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
-import CourseThumbnail from '../../utility/CourseThumbnail/CourseThumbnail.component'
-import BlogThumbnail from '../../utility/BlogThumbnail/BlogThumbnail.component'
+import CourseThumbnail from '../../utility/CourseThumbnail/CourseThumbnail.component';
+import BlogThumbnail from '../../utility/BlogThumbnail/BlogThumbnail.component';
 
-import useSwipe from '../../../hooks/useSwipe.hook'
-import useCarousel from '../../../hooks/useCarousel.hook'
-import useCourseThumbnailsRnd from '../../../hooks/api/useCourseThumbnailsRnd.hook'
-import useBlogsThumbnailsRnd from '../../../hooks/api/useBlogThumbnailsRnd.hook'
+import useSwipe from '../../../hooks/useSwipe.hook';
+import useCarousel from '../../../hooks/useCarousel.hook';
+import useCourseThumbnailsRnd from '../../../hooks/api/useCourseThumbnailsRnd.hook';
+import useBlogsThumbnailsRnd from '../../../hooks/api/useBlogThumbnailsRnd.hook';
 
 export default function Home() {
 
@@ -46,15 +46,15 @@ export default function Home() {
                 // Launch first banner background animation
                 useEffect(() => {
                     setBannerCurrent(1);
-                }, [])
+                }, []);
             // Const for 'next' and 'pervious' functions logic
-                const bannersAmount: number = 3;
+                const bannersAmount = 3;
             // Ref for 'next' and 'pervious' buttons click timeout
-                const bannerOnTimeout = useRef<boolean>(false)
+                const bannerOnTimeout = useRef<boolean>(false);
             // Banner section element ref to listen swipes on
                 const bannerRef = useRef<HTMLElement>(null);
             // Swipe distance value required for banner change
-                const bannerRequiredSwipeDistance = useRef<number>(0)
+                const bannerRequiredSwipeDistance = useRef<number>(0);
 
         // #endregion
 
@@ -70,7 +70,7 @@ export default function Home() {
                         bannerOnTimeout.current = true;
 
                         setTimeout(() => {
-                            bannerOnTimeout.current = false
+                            bannerOnTimeout.current = false;
                         }, 1500);
                     }
                 }
@@ -84,7 +84,7 @@ export default function Home() {
                         bannerOnTimeout.current = true;
 
                         setTimeout(() => {
-                            bannerOnTimeout.current = false
+                            bannerOnTimeout.current = false;
                         }, 1500);
                     }
                 }
@@ -101,16 +101,17 @@ export default function Home() {
                     // Initial set of bannerRequiredSwipeDistance
                     bannerRequiredSwipeDistance.current = bannerRef.current!.offsetWidth / 3;
                     // Listener to set bannerRequiredSwipeDistance on resize events
-                    window.addEventListener('resize', () => {bannerRequiredSwipeDistance.current = bannerRef.current!.offsetWidth / 3}, true)
-                    return window.removeEventListener('resize', () => {bannerRequiredSwipeDistance.current = bannerRef.current!.offsetWidth / 3}, true)
-                }, [])
+                    window.addEventListener('resize', () => {bannerRequiredSwipeDistance.current = bannerRef.current!.offsetWidth / 3;}, true);
+                    return window.removeEventListener('resize', () => {bannerRequiredSwipeDistance.current = bannerRef.current!.offsetWidth / 3;}, true);
+                }, []);
 
             // Swipe control effect to sync with useSwipe event listeners
                 useEffect(() => {
                     // Swipe right (click 'Next')
-                    if (bannerCurrentDistance! >  bannerRequiredSwipeDistance.current) {bannerStopListener(); bannerNext()}
+                    if (bannerCurrentDistance! >  bannerRequiredSwipeDistance.current) {bannerStopListener(); bannerNext();}
                     // Swipe left (click 'Pervious')
                     if (bannerCurrentDistance! < -bannerRequiredSwipeDistance.current) {bannerStopListener(); bannerPervious();}
+
                 }, [bannerCurrentDistance]);
 
         // #endregion
@@ -132,11 +133,11 @@ export default function Home() {
 
         // onClick for 'Next' button
         function teachersNextPage() {
-            teachersSetPage(teachersPage + 1)
+            teachersSetPage(teachersPage + 1);
         }
         // onClick for 'Pervious' button
         function teachersPerviousPage() {
-            teachersSetPage(teachersPage - 1)
+            teachersSetPage(teachersPage - 1);
         }
 
     // #endregion
@@ -160,11 +161,11 @@ export default function Home() {
 
         // onClick for 'Next' button
         function blogsNextPage() {
-            blogsSetPage(blogsPage + 1)
+            blogsSetPage(blogsPage + 1);
         }
         // onClick for 'Pervious' button
         function blogsPerviousPage() {
-            blogsSetPage(blogsPage - 1)
+            blogsSetPage(blogsPage - 1);
         }
 
 
@@ -178,11 +179,11 @@ export default function Home() {
 
         // onClick for 'Next' button
         function clientsNextPage() {
-            clientsSetPage(clientsPage + 1)
+            clientsSetPage(clientsPage + 1);
         }
         // onClick for 'Pervious' button
         function clientsPerviousPage() {
-            clientsSetPage(clientsPage - 1)
+            clientsSetPage(clientsPage - 1);
         }
 
 
@@ -377,28 +378,28 @@ export default function Home() {
 
                     <div className={styles.pages}>
                         <button className={teachersPage === 1 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(1)}}
+                            onClick={()=>{teachersSetPage(1);}}
                         ></button>
                         <button className={teachersPage === 2 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(2)}}
+                            onClick={()=>{teachersSetPage(2);}}
                         ></button>
                         <button className={teachersPage === 3 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(3)}}
+                            onClick={()=>{teachersSetPage(3);}}
                         ></button>
                         <button className={teachersPage === 4 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(4)}}
+                            onClick={()=>{teachersSetPage(4);}}
                         ></button>
                         <button className={teachersPage === 5 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(5)}}
+                            onClick={()=>{teachersSetPage(5);}}
                         ></button>
                         <button className={teachersPage === 6 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(6)}}
+                            onClick={()=>{teachersSetPage(6);}}
                         ></button>
                         <button className={teachersPage === 7 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(7)}}
+                            onClick={()=>{teachersSetPage(7);}}
                         ></button>
                         <button className={teachersPage === 8 ? styles.active : ''}
-                            onClick={()=>{teachersSetPage(8)}}
+                            onClick={()=>{teachersSetPage(8);}}
                         ></button>
                     </div>
 
@@ -442,13 +443,13 @@ export default function Home() {
 
                     <div className={styles.pages}>
                         <button className={reviewsPage === 1 ? styles.active : ''}
-                            onClick={()=>{reviewsSetPage(1)}}
+                            onClick={()=>{reviewsSetPage(1);}}
                         ></button>
                         <button className={reviewsPage === 2 ? styles.active : ''}
-                            onClick={()=>{reviewsSetPage(2)}}
+                            onClick={()=>{reviewsSetPage(2);}}
                         ></button>
                         <button className={reviewsPage === 3 ? styles.active : ''}
-                            onClick={()=>{reviewsSetPage(3)}}
+                            onClick={()=>{reviewsSetPage(3);}}
                         ></button>
                     </div>
 
@@ -532,5 +533,5 @@ export default function Home() {
                 </div>
             </section>
         </>
-    )
+    );
 }

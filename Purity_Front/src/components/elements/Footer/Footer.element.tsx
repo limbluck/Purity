@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import styles from './Footer.module.scss'
+import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
 
 export default function Footer() {
 
@@ -49,5 +49,5 @@ export default function Footer() {
             </div>
 
         </footer>
-    )
+    );
 }

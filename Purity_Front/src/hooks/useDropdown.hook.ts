@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 /**
  * @description - 
@@ -18,19 +18,19 @@ export default function useDropdown(parentRef: React.RefObject<HTMLElement>): [b
     const handleClickOustide = (event: MouseEvent) => {
         if (parentRef.current?.contains(event.target as HTMLElement) === false) {
             setShowDropdown(false);
-            document.removeEventListener("mousedown", handleClickOustide, true);
+            document.removeEventListener('mousedown', handleClickOustide, true);
         }
     };
 
     function toggleDropdown() {
         if (showDropdown === false) {
             setShowDropdown(true);
-            document.addEventListener("mousedown", handleClickOustide, true);
+            document.addEventListener('mousedown', handleClickOustide, true);
         } else {
             setShowDropdown(false);
-            document.removeEventListener("mousedown", handleClickOustide, true);
+            document.removeEventListener('mousedown', handleClickOustide, true);
         }
-    };
+    }
 
-    return [showDropdown, toggleDropdown]
+    return [showDropdown, toggleDropdown];
 }

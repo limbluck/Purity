@@ -1,6 +1,6 @@
-import { useState } from "react";
-import useSWR from "swr";
-import APIService from "../../services/api.service";
+import { useState } from 'react';
+import useSWR from 'swr';
+import APIService from '../../services/api.service';
 
 /**
  * @description - Hook to get custom amount of courses thumbnails through backend API request
@@ -16,7 +16,7 @@ import APIService from "../../services/api.service";
 export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, CourseThumbnail[]] {
 
     // Inject API service
-        const api = new APIService()
+        const api = new APIService();
 
     // Define states
         const [status, setStatus] = useState<RequestStatus>(10);
@@ -36,7 +36,7 @@ export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, 
 
             if (responceData.success) {
                 // Set data in state
-                    setCourses(responceData.data as CourseThumbnail[])
+                    setCourses(responceData.data as CourseThumbnail[]);
                 // Set status - success
                     setStatus(20);
             } else {
@@ -49,10 +49,10 @@ export default function useCourseThumbnailsRnd(amount: number): [RequestStatus, 
                 setStatus(40);
         }
 
-    }
+    };
 
     // Fetch courses thumbnails
-        const {} = useSWR(api.CoursesThumbnailsRnd(amount), fetchCourses)
+        useSWR(api.CoursesThumbnailsRnd(amount), fetchCourses);
 
-    return [status, courses]
+    return [status, courses];
 }

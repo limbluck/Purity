@@ -1,10 +1,10 @@
-import styles from './Header.module.scss'
-import profilePhotoPlaceholderURL from '../../../assets/profile-pic.jpg'
+import styles from './Header.module.scss';
+import profilePhotoPlaceholderURL from '../../../assets/profile-pic.jpg';
 
-import { useAuthContext } from '../../../context/auth.context'
-import { useRef } from 'react'
-import useDropdown from '../../../hooks/useDropdown.hook'
-import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../../context/auth.context';
+import { useRef } from 'react';
+import useDropdown from '../../../hooks/useDropdown.hook';
+import { Link } from 'react-router-dom';
 
 type Props = {
     toggleSidebar(): void,
@@ -15,14 +15,14 @@ export default function Header(props: Props) {
 
     // #region Auth mock
 
-        const MyAuthContext = useAuthContext()
+        const MyAuthContext = useAuthContext();
 
     // #endregion
 
     // #region Sidebar
 
         function handleSidebarToggleClick() {
-            props.toggleSidebar()
+            props.toggleSidebar();
         }
 
     // #endregion
@@ -33,11 +33,11 @@ export default function Header(props: Props) {
         const [showLanguageDropdown, toggleLanguageDropdown] = useDropdown(languageRef);
 
         function handleLanguageClick() {
-            toggleLanguageDropdown()
+            toggleLanguageDropdown();
         }
 
         function handleLanguageDropdownClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-            event.stopPropagation()
+            event.stopPropagation();
         }
 
         function renderLanguageDropdown() {
@@ -49,7 +49,7 @@ export default function Header(props: Props) {
                     <button tabIndex={0}>English</button>
                     <button tabIndex={0}>Русский</button>
                 </div>
-            )
+            );
         }
 
     // #endregion
@@ -60,11 +60,11 @@ export default function Header(props: Props) {
         const [showSearchDropdown, toggleSearchDropdown] = useDropdown(searchRef);
 
         function handleSearchClick() {
-            toggleSearchDropdown()
+            toggleSearchDropdown();
         }
 
         function handleSearchDropdownClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-            event.stopPropagation()
+            event.stopPropagation();
         }
 
         function renderSearchDropdown() {
@@ -75,7 +75,7 @@ export default function Header(props: Props) {
 
                     <input className={styles.searchbar} type="text" placeholder="Search" />
                 </div>
-            )
+            );
         }
 
     // #endregion
@@ -97,10 +97,10 @@ export default function Header(props: Props) {
                         {showNotificationsDropdown && renderNotificationsDropdown()}
 
                     </div>
-            )
+            );
         }
         function handleNotificationsClick() {
-            toggleNotificationsDropdown()
+            toggleNotificationsDropdown();
         }
 
         function renderNotificationsDropdown() {
@@ -129,10 +129,10 @@ export default function Header(props: Props) {
                     </div>
                     <button className={styles.see_all}>See all</button>
                 </div>
-            )
+            );
         }
         function handleNotificationsDropdownClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-            event.stopPropagation()
+            event.stopPropagation();
         }
 
     // #endregion
@@ -147,10 +147,10 @@ export default function Header(props: Props) {
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.476 10 7.747 0 4.272-4.48 7.748-9.986 7.748-.62 0-1.092-.046-1.759-.097-1 .776-1.774 1.403-3.485 1.962.26-1.383-.113-2.259-.514-3.259-2.383-1.505-4.256-3.411-4.256-6.354 0-4.271 4.486-7.747 10-7.747zm0-2c-6.627 0-12 4.363-12 9.747 0 3.13 1.816 5.916 4.641 7.699.867 2.167-1.084 4.008-3.143 4.502 3.085.266 6.776-.481 9.374-2.497 7.08.54 13.128-3.988 13.128-9.704 0-5.384-5.373-9.747-12-9.747z"/></svg>
                 </div>
-            )
+            );
         }
         function handleChatButtonClick() {
-            props.toggleChatbar()
+            props.toggleChatbar();
         }
 
     // #endregion
@@ -172,10 +172,10 @@ export default function Header(props: Props) {
 
                     {showProfileDropdown && renderProfileDropdown()}
                 </div>
-            )
+            );
         }
             function handleProfileClick() {
-                toggleProfileDropdown()
+                toggleProfileDropdown();
             }
 
         function renderProfileDropdown() {
@@ -193,10 +193,10 @@ export default function Header(props: Props) {
                     <a tabIndex={0} onClick={handleLogOutClick} data-testid="profile-dropdown-logout">Log out</a>
 
                 </div>
-            )
+            );
         }
             function handleProfileDropdownClick(event: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-                event.stopPropagation()
+                event.stopPropagation();
             }
             function handleLogOutClick() {
                 MyAuthContext.setAuth(false);
@@ -211,10 +211,10 @@ export default function Header(props: Props) {
 
                     Log in
                 </button>
-            )
+            );
         }
             function handleLogInClick() {
-                MyAuthContext.setAuth(true)
+                MyAuthContext.setAuth(true);
             }
 
     // #endregion
@@ -268,6 +268,6 @@ export default function Header(props: Props) {
             {MyAuthContext.auth ? renderProfile() : renderLogIn()}
 
         </header>
-    )
+    );
 
 }
