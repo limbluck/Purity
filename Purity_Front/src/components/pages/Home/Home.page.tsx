@@ -27,8 +27,8 @@ import clientPictureURL8 from '../../../assets/clients/client8.png';
 
 import { useEffect, useRef, useState } from 'react';
 
-import CourseThumbnail from '../../utility/CourseThumbnail/CourseThumbnail.component';
-import BlogThumbnail from '../../utility/BlogThumbnail/BlogThumbnail.component';
+import CourseThumbnail from '../../utility/CourseThumbnail/CourseThumbnail.utility';
+import BlogThumbnail from '../../utility/BlogThumbnail/BlogThumbnail.utility';
 
 import useSwipe from '../../../hooks/useSwipe.hook';
 import useCarousel from '../../../hooks/useCarousel.hook';

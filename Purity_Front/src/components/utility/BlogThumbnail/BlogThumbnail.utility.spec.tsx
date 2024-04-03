@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import BlogThumbnail from './BlogThumbnail.component';
+import BlogThumbnail from './BlogThumbnail.utility';
 
 // Mock API service
     jest.mock('../../../services/api.service', () => {
