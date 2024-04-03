@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import CourseThumbnail from './CourseThumbnail.component';
+import CourseThumbnail from './CourseThumbnail.utility';
 
 // Mock API service
 jest.mock('../../../services/api.service', () => {
